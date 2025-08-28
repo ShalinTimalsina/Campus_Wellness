@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sleep hygiene tips and tools for better rest and academic performance">
+    <title>Sleep Hygiene - Campus Wellness Hub</title>
+        <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #457B9D;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --background-color: #fff;
+            --card-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --accent-color: #e9f5ec;
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #6daa80;
+            --secondary-color: #2a2d3e;
+            --text-color: #f8f9fa;
+            --light-text: #adb5bd;
+            --background-color: #212529;
+            --card-bg: #2a2d3e;
+            --border-color: #495057;
+            --accent-color: #34495e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Header & Navigation */
+        .header {
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .nav-logo i {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--background-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            min-width: 200px;
+            display: none;
+            z-index: 100;
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu li a {
+            padding: 0.5rem 1.5rem;
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .dropdown-menu li a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-left: 1rem;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background-color: var(--accent-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Sleep Assessment */
+        .sleep-assessment {
+            padding: 3rem 0;
+        }
+        
+        .assessment-container {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .assessment-intro {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .question-card {
+            background-color: var(--background-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .answer-options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .answer-options input {
+            margin-right: 0.5rem;
+        }
+        
+        .assessment-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            margin: 2rem auto;
+            transition: background-color 0.3s;
+        }
+        
+        .assessment-btn:hover {
+            background-color: #3a7350;
+        }
+        
+        .assessment-result {
+            background-color: var(--background-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .score-display {
+            margin: 1.5rem 0;
+        }
+        
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            border: 4px solid var(--primary-color);
+        }
+        
+        .result-recommendations {
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        
+        .result-recommendations ul {
+            padding-left: 1.5rem;
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 3rem 0;
+            background-color: var(--card-bg);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-description {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--light-text);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a7350;
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--card-bg);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3, .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            font-size: 1.2rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--light-text);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--background-color);
+                width: 100%;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+                transition: 0.4s;
+                z-index: 99;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                display: none;
+                margin-left: 1rem;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .question-card {
+                padding: 1rem;
+            }
+            
+            .score-circle {
+                width: 100px;
+                height: 100px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li class="dropdown">
+                        <a href="programs.html" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fitness.html">Fitness Challenges</a></li>
+                            <li><a href="nutrition.html">Nutrition Guidance</a></li>
+                            <li><a href="mental.html">Mental Health</a></li>
+                            <li><a href="addiction.html">Addiction Recovery</a></li>
+                            <li><a href="sleep.html" class="active">Sleep Hygiene</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Sleep Hygiene</h1>
+                <p>Optimize your sleep for better health and academic performance</p>
+            </div>
+        </section>
+
+        <!-- Sleep Assessment -->
+        <section class="sleep-assessment">
+            <div class="container">
+                <h2>Sleep Quality Assessment</h2>
+                <div class="assessment-container">
+                    <div class="assessment-intro">
+                        <p>Evaluate your current sleep habits to identify areas for improvement.</p>
+                    </div>
+                    
+                    <div class="assessment-questions">
+                        <div class="question-card">
+                            <h4>How many hours of sleep do you typically get per night?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="sleep-q1" value="1"> Less than 5 hours</label>
+                                <label><input type="radio" name="sleep-q1" value="2"> 5-6 hours</label>
+                                <label><input type="radio" name="sleep-q1" value="3"> 6-7 hours</label>
+                                <label><input type="radio" name="sleep-q1" value="4"> 7-8 hours</label>
+                                <label><input type="radio" name="sleep-q1" value="5"> 8+ hours</label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h4>How long does it usually take you to fall asleep?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="sleep-q2" value="5"> Less than 15 minutes</label>
+                                <label><input type="radio" name="sleep-q2" value="4"> 15-30 minutes</label>
+                                <label><input type="radio" name="sleep-q2" value="3"> 30-45 minutes</label>
+                                <label><input type="radio" name="sleep-q2" value="2"> 45-60 minutes</label>
+                                <label><input type="radio" name="sleep-q2" value="1"> More than 60 minutes</label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h4>How often do you wake up feeling refreshed?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="sleep-q3" value="5"> Always</label>
+                                <label><input type="radio" name="sleep-q3" value="4"> Usually</label>
+                                <label><input type="radio" name="sleep-q3" value="3"> Sometimes</label>
+                                <label><input type="radio" name="sleep-q3" value="2"> Rarely</label>
+                                <label><input type="radio" name="sleep-q3" value="1"> Never</label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h4>How consistent is your sleep schedule?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="sleep-q4" value="5"> Very consistent (within 30 minutes)</label>
+                                <label><input type="radio" name="sleep-q4" value="4"> Mostly consistent (within 1 hour)</label>
+                                <label><input type="radio" name="sleep-q4" value="3"> Somewhat consistent (within 2 hours)</label>
+                                <label><input type="radio" name="sleep-q4" value="2"> Inconsistent (varies 2+ hours)</label>
+                                <label><input type="radio" name="sleep-q4" value="1"> Very inconsistent</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="assessment-btn" id="calculateScore">Get My Sleep Score</button>
+                    
+                    <div class="assessment-result" id="sleepAssessmentResult">
+                        <div class="result-content">
+                            <h4>Your Sleep Score</h4>
+                            <div class="score-display">
+                                <div class="score-circle">
+                                    <span id="sleepScore">0</span>/20
+                                </div>
+                            </div>
+                            <p id="sleepResultText"></p>
+                            <div class="result-recommendations" id="sleepResultRecommendations"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="container">
+                <h2>Understanding Sleep Hygiene</h2>
+                <div class="video-container">
+                   <iframe width="560" height="315" src="https://www.youtube.com/embed/Amkg1cdDCpM?si=wmQI-IgOVYaGoDiv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-description">
+                    <p>Learn about the importance of good sleep habits and how to improve your sleep quality.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Improve Your Sleep?</h2>
+                    <p>Better sleep leads to better academic performance, improved mood, and enhanced overall health.</p>
+                    <div class="cta-buttons">
+                        <a href="contact.html" class="btn btn-primary">Get Sleep Consultation</a>
+                        <a href="events.html" class="btn btn-outline">Join Sleep Workshop</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Campus Wellness Hub</h3>
+                    <p>Promoting health and wellness for university students through comprehensive resources and support.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> wellness@university.edu</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Student Health Center, Room 200</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Campus Wellness Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+   <script src="js/script.js"></script>
+    <script >
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+
+        if (currentTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Mobile dropdown handling
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Sleep Assessment Functionality
+        const calculateBtn = document.getElementById('calculateScore');
+        const resultSection = document.getElementById('sleepAssessmentResult');
+        const sleepScore = document.getElementById('sleepScore');
+        const resultText = document.getElementById('sleepResultText');
+        const resultRecommendations = document.getElementById('sleepResultRecommendations');
+
+        calculateBtn.addEventListener('click', () => {
+            // Get selected values
+            const q1 = document.querySelector('input[name="sleep-q1"]:checked');
+            const q2 = document.querySelector('input[name="sleep-q2"]:checked');
+            const q3 = document.querySelector('input[name="sleep-q3"]:checked');
+            const q4 = document.querySelector('input[name="sleep-q4"]:checked');
+            
+            // Check if all questions are answered
+            if (!q1 || !q2 || !q3 || !q4) {
+                alert('Please answer all questions before calculating your score.');
+                return;
+            }
+            
+            // Calculate total score
+            const totalScore = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + parseInt(q4.value);
+            
+            // Display score
+            sleepScore.textContent = totalScore;
+            
+            // Provide feedback based on score
+            if (totalScore >= 16) {
+                resultText.textContent = 'Excellent! Your sleep habits are very healthy.';
+                resultRecommendations.innerHTML = `
+                    <p>Keep up the good work! To maintain your excellent sleep hygiene:</p>
+                    <ul>
+                        <li>Continue following your consistent sleep schedule</li>
+                        <li>Maintain your bedtime routine</li>
+                        <li>Keep your sleep environment optimal</li>
+                    </ul>
+                `;
+            } else if (totalScore >= 12) {
+                resultText.textContent = 'Good! Your sleep habits are generally healthy with some room for improvement.';
+                resultRecommendations.innerHTML = `
+                    <p>Consider these improvements to enhance your sleep quality:</p>
+                    <ul>
+                        <li>Try to be more consistent with your sleep schedule</li>
+                        <li>Create a relaxing pre-bed routine</li>
+                        <li>Limit screen time before bed</li>
+                    </ul>
+                `;
+            } else if (totalScore >= 8) {
+                resultText.textContent = 'Fair. Your sleep could use some improvement.';
+                resultRecommendations.innerHTML = `
+                    <p>Focus on these areas to improve your sleep:</p>
+                    <ul>
+                        <li>Aim for 7-9 hours of sleep per night</li>
+                        <li>Establish a consistent sleep-wake schedule</li>
+                        <li>Create a bedtime routine to wind down</li>
+                        <li>Make your sleep environment more comfortable</li>
+                    </ul>
+                `;
+            } else {
+                resultText.textContent = 'Poor. Your sleep habits need significant improvement.';
+                resultRecommendations.innerHTML = `
+                    <p>Prioritize these changes to improve your sleep health:</p>
+                    <ul>
+                        <li>Focus on getting at least 7 hours of sleep nightly</li>
+                        <li>Set a consistent bedtime and wake time</li>
+                        <li>Create a relaxing pre-sleep routine</li>
+                        <li>Evaluate your sleep environment for disturbances</li>
+                        <li>Consider speaking with a healthcare professional</li>
+                    </ul>
+                `;
+            }
+            
+            // Show result section
+            resultSection.style.display = 'block';
+            
+            // Scroll to results
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+    <script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+        
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    // For dropdown parents, don't close the menu immediately
+                    if (!link.parentElement.classList.contains('dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && 
+                !hamburger.contains(e.target) && 
+                !navMenu.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+        
+        // Handle dropdowns on mobile
+        const dropdownToggles = document.querySelectorAll('.dropdown > .nav-link');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdownMenu = this.nextElementSibling;
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu !== dropdownMenu && menu.classList.contains('show')) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdownMenu.classList.toggle('show');
+                }
+            });
+        });
+    }
+});
+</script>
+</body>
+</html>

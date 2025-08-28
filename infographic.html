@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Guide Infographic - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <a href="resources.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Resources
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 2rem 1rem; max-width: 900px;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="background-color: var(--color-secondary); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem;">
+                Physical Wellness • Infographic
+            </div>
+            <h1 style="color: var(--color-text-primary);">Campus Nutrition Guide</h1>
+            <p style="color: var(--color-text-secondary); font-size: 1.1rem;">Visual guide to maintaining healthy eating habits while living on campus</p>
+        </div>
+
+        <div style="background-color: var(--color-surface); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+            <!-- Interactive Infographic -->
+            <div style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); padding: 2rem; border-radius: 12px; color: white; margin-bottom: 2rem;">
+                <h2 style="text-align: center; color: white; margin-bottom: 2rem;">
+                    <i class="fas fa-apple-alt"></i> Your Daily Nutrition Guide
+                </h2>
+                
+                <!-- Meal Planning Section -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" onclick="showMealDetails('breakfast')">
+                        <i class="fas fa-sun" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                        <h4 style="color: white; margin-bottom: 0.5rem;">Breakfast</h4>
+                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">25% of daily calories</p>
+                        <p style="margin: 0; font-size: 0.8rem; opacity: 0.8;">7:00 - 9:00 AM</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" onclick="showMealDetails('lunch')">
+                        <i class="fas fa-sun" style="font-size: 2rem; margin-bottom: 1rem; display: block; color: #FFD700;"></i>
+                        <h4 style="color: white; margin-bottom: 0.5rem;">Lunch</h4>
+                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">35% of daily calories</p>
+                        <p style="margin: 0; font-size: 0.8rem; opacity: 0.8;">12:00 - 2:00 PM</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" onclick="showMealDetails('dinner')">
+                        <i class="fas fa-moon" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                        <h4 style="color: white; margin-bottom: 0.5rem;">Dinner</h4>
+                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">30% of daily calories</p>
+                        <p style="margin: 0; font-size: 0.8rem; opacity: 0.8;">6:00 - 8:00 PM</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" onclick="showMealDetails('snacks')">
+                        <i class="fas fa-cookie-bite" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+                        <h4 style="color: white; margin-bottom: 0.5rem;">Snacks</h4>
+                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">10% of daily calories</p>
+                        <p style="margin: 0; font-size: 0.8rem; opacity: 0.8;">Between meals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meal Details Modal -->
+            <div id="mealModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none;" onclick="closeMealModal()">
+                <div style="background: var(--color-surface); margin: 5% auto; padding: 2rem; border-radius: 12px; max-width: 600px; position: relative;" onclick="event.stopPropagation()">
+                    <button onclick="closeMealModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; color: var(--color-text-secondary); cursor: pointer;">×</button>
+                    <div id="mealContent"></div>
+                </div>
+            </div>
+
+            <!-- Nutrition Facts -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="border: 2px solid var(--color-primary); border-radius: 8px; overflow: hidden;">
+                    <div style="background: var(--color-primary); color: white; padding: 1rem; text-align: center;">
+                        <h3 style="margin: 0; color: white;"><i class="fas fa-tint"></i> Hydration</h3>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--color-primary);">8-10</div>
+                            <div style="color: var(--color-text-secondary);">glasses per day</div>
+                        </div>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i>Start with water upon waking</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i>Carry a reusable water bottle</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i>Drink before you feel thirsty</li>
+                            <li><i class="fas fa-check" style="color: var(--color-success); margin-right: 0.5rem;"></i>Add fruit for natural flavor</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="border: 2px solid var(--color-success); border-radius: 8px; overflow: hidden;">
+                    <div style="background: var(--color-success); color: white; padding: 1rem; text-align: center;">
+                        <h3 style="margin: 0; color: white;"><i class="fas fa-leaf"></i> Fruits & Vegetables</h3>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--color-success);">5-9</div>
+                            <div style="color: var(--color-text-secondary);">servings daily</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin-bottom: 1rem;">
+                            <div style="width: 30px; height: 30px; background: #FF6B6B; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">🍎</div>
+                            <div style="width: 30px; height: 30px; background: #4ECDC4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">🥬</div>
+                            <div style="width: 30px; height: 30px; background: #45B7D1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">🫐</div>
+                            <div style="width: 30px; height: 30px; background: #96CEB4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">🥦</div>
+                            <div style="width: 30px; height: 30px; background: #FECA57; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;">🍌</div>
+                        </div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin: 0;">Aim for a rainbow of colors for maximum nutrients</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Portion Guide -->
+            <div style="background: var(--color-background); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-hand-paper"></i> Hand Portion Guide</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="text-align: center; cursor: pointer; padding: 1rem; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-secondary)'" onmouseout="this.style.background='transparent'">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">✋</div>
+                        <h4 style="margin-bottom: 0.5rem;">Palm</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">Protein serving<br>(chicken, fish, beans)</p>
+                    </div>
+                    <div style="text-align: center; cursor: pointer; padding: 1rem; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-secondary)'" onmouseout="this.style.background='transparent'">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">👊</div>
+                        <h4 style="margin-bottom: 0.5rem;">Fist</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">Vegetable serving<br>(salad, cooked veggies)</p>
+                    </div>
+                    <div style="text-align: center; cursor: pointer; padding: 1rem; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-secondary)'" onmouseout="this.style.background='transparent'">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🤏</div>
+                        <h4 style="margin-bottom: 0.5rem;">Thumb</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">Fat serving<br>(nuts, oils, butter)</p>
+                    </div>
+                    <div style="text-align: center; cursor: pointer; padding: 1rem; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.background='var(--color-secondary)'" onmouseout="this.style.background='transparent'">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🤲</div>
+                        <h4 style="margin-bottom: 0.5rem;">Cupped Hands</h4>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-secondary);">Carb serving<br>(rice, pasta, bread)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campus-Specific Tips -->
+            <div style="border-left: 4px solid var(--color-warning); padding: 1.5rem; background: rgba(244, 162, 97, 0.1); border-radius: 0 8px 8px 0; margin-bottom: 2rem;">
+                <h3><i class="fas fa-university"></i> Campus Dining Hacks</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div>
+                        <h4><i class="fas fa-utensils"></i> Dining Hall Strategy</h4>
+                        <ul style="font-size: 0.9rem;">
+                            <li>Survey all options before choosing</li>
+                            <li>Start with salad bar</li>
+                            <li>Choose grilled over fried</li>
+                            <li>Use smaller plates for portion control</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-shopping-cart"></i> Dorm Room Essentials</h4>
+                        <ul style="font-size: 0.9rem;">
+                            <li>Greek yogurt and berries</li>
+                            <li>Whole grain crackers</li>
+                            <li>Nut butter and apples</li>
+                            <li>Instant oatmeal packets</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-clock"></i> Quick Study Snacks</h4>
+                        <ul style="font-size: 0.9rem;">
+                            <li>Trail mix (nuts + dried fruit)</li>
+                            <li>Hummus with veggie sticks</li>
+                            <li>Hard-boiled eggs</li>
+                            <li>Whole grain toast with avocado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget-Friendly Tips -->
+            <div style="background: var(--color-surface); border: 1px solid var(--color-secondary); border-radius: 8px; padding: 1.5rem;">
+                <h3><i class="fas fa-piggy-bank"></i> Eating Well on a Budget</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; color: var(--color-success); margin-bottom: 0.5rem;">$</div>
+                        <h5>Low Cost</h5>
+                        <p style="font-size: 0.8rem; margin: 0;">Bananas, rice, beans, eggs, oats, peanut butter</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; color: var(--color-warning); margin-bottom: 0.5rem;">$$</div>
+                        <h5>Medium Cost</h5>
+                        <p style="font-size: 0.8rem; margin: 0;">Chicken, tuna, frozen vegetables, whole grain bread</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-size: 2rem; color: var(--color-accent); margin-bottom: 0.5rem;">$$$</div>
+                        <h5>Splurge Items</h5>
+                        <p style="font-size: 0.8rem; margin: 0;">Fresh berries, salmon, organic produce, nuts</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="downloadInfographic()" style="margin-right: 1rem;">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+                <button class="btn btn-secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print Guide
+                </button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="resources.html" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i> Back to Resources
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+
+        const mealData = {
+            breakfast: {
+                title: 'Healthy Breakfast Ideas',
+                icon: 'fas fa-sun',
+                content: `
+                    <h3><i class="fas fa-sun"></i> Start Your Day Right</h3>
+                    <p>A nutritious breakfast provides energy for morning classes and helps maintain focus throughout the day.</p>
+                    
+                    <h4>Quick Options (5-10 minutes):</h4>
+                    <ul>
+                        <li><strong>Overnight oats:</strong> Oats + milk + berries + nuts</li>
+                        <li><strong>Greek yogurt parfait:</strong> Yogurt + granola + fruit</li>
+                        <li><strong>Whole grain toast:</strong> Avocado or nut butter topping</li>
+                        <li><strong>Smoothie:</strong> Banana + spinach + protein powder + milk</li>
+                    </ul>
+                    
+                    <h4>Grab-and-Go Options:</h4>
+                    <ul>
+                        <li>Hard-boiled egg + whole grain muffin + apple</li>
+                        <li>Trail mix + banana + low-fat milk</li>
+                        <li>Protein bar + orange juice</li>
+                    </ul>
+                `
+            },
+            lunch: {
+                title: 'Balanced Lunch Choices',
+                icon: 'fas fa-sun',
+                content: `
+                    <h3><i class="fas fa-sun" style="color: #FFD700;"></i> Midday Fuel</h3>
+                    <p>Lunch should provide sustained energy for afternoon activities and help prevent the 3 PM energy crash.</p>
+                    
+                    <h4>Dining Hall Strategy:</h4>
+                    <ul>
+                        <li><strong>Build your plate:</strong> 1/2 vegetables, 1/4 protein, 1/4 whole grains</li>
+                        <li><strong>Salad bar hack:</strong> Add protein (chickpeas, eggs, cheese)</li>
+                        <li><strong>Soup + sandwich combo:</strong> Choose broth-based soups</li>
+                        <li><strong>Stir-fry station:</strong> Load up on vegetables</li>
+                    </ul>
+                    
+                    <h4>Dorm Room Lunch:</h4>
+                    <ul>
+                        <li>Wrap: Whole wheat tortilla + hummus + veggies + turkey</li>
+                        <li>Microwave meal upgrade: Add frozen vegetables</li>
+                        <li>Instant noodles + egg + frozen vegetables</li>
+                    </ul>
+                `
+            },
+            dinner: {
+                title: 'Nutritious Dinner Ideas',
+                icon: 'fas fa-moon',
+                content: `
+                    <h3><i class="fas fa-moon"></i> Evening Nourishment</h3>
+                    <p>Dinner should be satisfying but not too heavy, providing nutrients for recovery and tomorrow's energy.</p>
+                    
+                    <h4>Balanced Dinner Combinations:</h4>
+                    <ul>
+                        <li><strong>Classic combo:</strong> Grilled protein + roasted vegetables + quinoa/brown rice</li>
+                        <li><strong>One-pot meal:</strong> Vegetable and bean chili with whole grain bread</li>
+                        <li><strong>Pasta night:</strong> Whole grain pasta + marinara + lean ground turkey + side salad</li>
+                        <li><strong>Taco Tuesday:</strong> Bean or fish tacos with lots of vegetables</li>
+                    </ul>
+                    
+                    <h4>Late Night Study Sessions:</h4>
+                    <ul>
+                        <li>Keep dinner lighter if studying late</li>
+                        <li>Include complex carbs for brain fuel</li>
+                        <li>Avoid heavy, greasy foods that can affect sleep</li>
+                    </ul>
+                `
+            },
+            snacks: {
+                title: 'Smart Snacking',
+                icon: 'fas fa-cookie-bite',
+                content: `
+                    <h3><i class="fas fa-cookie-bite"></i> Fuel Between Meals</h3>
+                    <p>Smart snacking can bridge energy gaps between meals and help maintain steady blood sugar levels.</p>
+                    
+                    <h4>Study Snacks That Boost Brain Power:</h4>
+                    <ul>
+                        <li><strong>Nuts and seeds:</strong> Almonds, walnuts, pumpkin seeds</li>
+                        <li><strong>Fruits:</strong> Blueberries, apples, bananas</li>
+                        <li><strong>Protein-rich:</strong> Greek yogurt, cheese sticks, hard-boiled eggs</li>
+                        <li><strong>Whole grains:</strong> Whole grain crackers, popcorn</li>
+                    </ul>
+                    
+                    <h4>Timing Tips:</h4>
+                    <ul>
+                        <li>Snack 2-3 hours between meals</li>
+                        <li>Pre-workout: Banana + small amount of nut butter</li>
+                        <li>Post-workout: Protein + carbs within 30 minutes</li>
+                        <li>Late night: Light protein (Greek yogurt, cottage cheese)</li>
+                    </ul>
+                `
+            }
+        };
+
+        function showMealDetails(mealType) {
+            const modal = document.getElementById('mealModal');
+            const content = document.getElementById('mealContent');
+            const meal = mealData[mealType];
+            
+            content.innerHTML = meal.content;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMealModal() {
+            const modal = document.getElementById('mealModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadInfographic() {
+            // Create a simple text version for download
+            const content = `
+CAMPUS WELLNESS HUB - NUTRITION GUIDE
+
+DAILY MEAL BREAKDOWN:
+• Breakfast: 25% of daily calories (7:00-9:00 AM)
+• Lunch: 35% of daily calories (12:00-2:00 PM) 
+• Dinner: 30% of daily calories (6:00-8:00 PM)
+• Snacks: 10% of daily calories (between meals)
+
+HYDRATION: 8-10 glasses of water daily
+
+FRUITS & VEGETABLES: 5-9 servings daily
+
+HAND PORTION GUIDE:
+• Palm = Protein serving
+• Fist = Vegetable serving  
+• Thumb = Fat serving
+• Cupped hands = Carb serving
+
+CAMPUS DINING TIPS:
+- Survey all options before choosing
+- Start with salad bar
+- Choose grilled over fried
+- Use smaller plates for portion control
+
+For more resources, visit: Campus Wellness Hub
+            `;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'campus-nutrition-guide.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+            
+            showNotification('Nutrition guide downloaded!', 'success');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-${type === 'success' ? 'success' : type === 'error' ? 'error' : 'primary'});
+                color: white;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation' : 'info'}-circle"></i>
+                    <span>${message}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 5px; right: 10px; background: none; border: none; color: white; cursor: pointer;">×</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Keyboard navigation for accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMealModal();
+            }
+        });
+    </script>
+</body>
+</html>

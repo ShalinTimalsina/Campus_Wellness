@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently asked questions about Campus Wellness Hub services and programs">
+    <title>FAQ - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li class="dropdown">
+                        <a href="programs.html" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fitness.html">Fitness Challenges</a></li>
+                            <li><a href="nutrition.html">Nutrition Guidance</a></li>
+                            <li><a href="mental.html">Mental Health</a></li>
+                            <li><a href="addiction.html">Addiction Recovery</a></li>
+                            <li><a href="sleep.html">Sleep Hygiene</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our wellness services</p>
+            </div>
+        </section>
+
+        <!-- FAQ Search -->
+        <section class="faq-search">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" id="faqSearch" placeholder="Search for answers..." class="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Categories -->
+        <section class="faq-categories">
+            <div class="container">
+                <h2>Browse by Category</h2>
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">All Questions</button>
+                    <button class="category-btn" data-category="general">General</button>
+                    <button class="category-btn" data-category="programs">Programs</button>
+                    <button class="category-btn" data-category="mental-health">Mental Health</button>
+                    <button class="category-btn" data-category="appointments">Appointments</button>
+                    <button class="category-btn" data-category="privacy">Privacy</button>
+                    <button class="category-btn" data-category="emergency">Emergency</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Content -->
+        <section class="faq-content">
+            <div class="container">
+                <div class="faq-list" id="faqList">
+                    <!-- General Questions -->
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <h3>What is Campus Wellness Hub?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Campus Wellness Hub is a comprehensive wellness center dedicated to supporting the physical, mental, and emotional health of university students. We offer a wide range of programs, resources, and services including fitness challenges, nutrition guidance, mental health support, addiction recovery services, and sleep hygiene education.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <h3>Are your services free for students?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! All Campus Wellness Hub programs and services are completely free for enrolled university students. This includes individual counseling, group programs, workshops, fitness classes, and access to our resource library.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <h3>Where are you located on campus?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We're located in the Student Health Center, Room 200. Our hours are Monday-Friday 8:00 AM - 6:00 PM, and Saturday 10:00 AM - 4:00 PM. We're closed on Sundays, but emergency support is always available.</p>
+                        </div>
+                    </div>
+
+                    <!-- Programs Questions -->
+                    <div class="faq-item" data-category="programs">
+                        <div class="faq-question">
+                            <h3>How do I join a fitness challenge?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can join fitness challenges through our website or by visiting our office. Simply navigate to the Fitness Challenges page, choose a challenge that fits your level, and click "Join Challenge." You'll receive a welcome email with all the details and access to our tracking tools.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="programs">
+                        <div class="faq-question">
+                            <h3>Do I need to have experience to join wellness programs?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Not at all! Our programs are designed for all experience levels. We have beginner-friendly options for every program area, and our staff will help you find the right starting point for your current fitness level and wellness goals.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="programs">
+                        <div class="faq-question">
+                            <h3>Can I participate in multiple programs at once?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! We encourage students to engage with multiple aspects of wellness. You can participate in a fitness challenge while also attending nutrition workshops and mental health support groups. Our staff can help you create a balanced wellness plan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mental Health Questions -->
+                    <div class="faq-item" data-category="mental-health">
+                        <div class="faq-question">
+                            <h3>Is counseling really confidential?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all mental health services are strictly confidential. We follow professional ethical guidelines and legal requirements to protect your privacy. Information is only shared with your written consent or in rare cases where there's imminent danger to yourself or others.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="mental-health">
+                        <div class="faq-question">
+                            <h3>What if I'm having a mental health crisis?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If you're experiencing a mental health crisis, please call our 24/7 crisis line at (555) 123-4567, text HOME to 741741, or call 988 for the Suicide & Crisis Lifeline. You can also visit the nearest emergency room or call 911 if you're in immediate danger.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="mental-health">
+                        <div class="faq-question">
+                            <h3>How long can I receive counseling services?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>There's no set limit on counseling services. We work with you to determine the appropriate length of treatment based on your needs and goals. Some students benefit from short-term support, while others engage in longer-term counseling relationships.</p>
+                        </div>
+                    </div>
+
+                    <!-- Appointments Questions -->
+                    <div class="faq-item" data-category="appointments">
+                        <div class="faq-question">
+                            <h3>How do I schedule an appointment?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can schedule appointments through our website, by calling (555) 123-4567, or by visiting our office in person. We offer same-day appointments for urgent concerns and typically have availability within 2-3 days for routine appointments.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="appointments">
+                        <div class="faq-question">
+                            <h3>What should I expect during my first appointment?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Your first appointment will include an intake assessment where we'll discuss your wellness goals, current concerns, and health history. This helps us understand how to best support you and develop a personalized wellness plan. The appointment typically lasts 60-90 minutes.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="appointments">
+                        <div class="faq-question">
+                            <h3>Can I cancel or reschedule my appointment?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we understand that student schedules can be unpredictable. Please give us at least 24 hours notice when possible by calling our office or using your online account. This helps us offer the slot to another student who may need it.</p>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Questions -->
+                    <div class="faq-item" data-category="privacy">
+                        <div class="faq-question">
+                            <h3>Will my parents be notified about my use of services?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, we do not contact parents or guardians about your participation in our programs unless you specifically request this or provide written consent. Students 18 and older have full confidentiality rights regarding their wellness and healthcare information.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="privacy">
+                        <div class="faq-question">
+                            <h3>Are my records kept separate from academic records?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all wellness and health records are maintained separately from your academic records and are not accessible to faculty, staff, or administration without your written consent. We follow strict HIPAA guidelines to protect your health information.</p>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Questions -->
+                    <div class="faq-item" data-category="emergency">
+                        <div class="faq-question">
+                            <h3>What constitutes a wellness emergency?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>A wellness emergency includes thoughts of suicide or self-harm, severe panic attacks, substance overdose, eating disorder crisis, or any situation where you feel unsafe or out of control. When in doubt, reach out - we're here to help assess the situation and provide appropriate support.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="emergency">
+                        <div class="faq-question">
+                            <h3>What happens if I call the crisis line?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>When you call our crisis line, you'll speak immediately with a trained crisis counselor who will assess your situation, provide immediate support, and help determine next steps. This might include safety planning, emergency counseling, or connecting you with additional resources.</p>
+                        </div>
+                    </div>
+
+                    <!-- More General Questions -->
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <h3>Do you serve graduate students and staff?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our primary focus is undergraduate students, but we do offer services to graduate students. University staff should contact Employee Assistance Programs for services. However, staff are welcome to attend our open wellness workshops and events.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="programs">
+                        <div class="faq-question">
+                            <h3>Are there specific programs for international students?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While all our programs are open to international students, we also offer specialized support groups and workshops that address unique challenges faced by international students, including cultural adjustment, homesickness, and navigating healthcare systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <h3>How can I stay updated on new programs and events?</h3>
+                            <button class="faq-toggle"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can subscribe to our newsletter, follow us on social media, or check our website regularly. We also send personalized program recommendations based on your interests and previous participation. You can update your communication preferences in your online account.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Still Have Questions -->
+        <section class="still-questions">
+            <div class="container">
+                <div class="questions-content">
+                    <h2>Still Have Questions?</h2>
+                    <p>Can't find the answer you're looking for? Our team is here to help!</p>
+                    <div class="contact-options">
+                        <div class="contact-option">
+                            <i class="fas fa-phone"></i>
+                            <h4>Call Us</h4>
+                            <p>(555) 123-4567</p>
+                            <span>Mon-Fri 8AM-6PM</span>
+                        </div>
+                        <div class="contact-option">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email Us</h4>
+                            <p>wellness@university.edu</p>
+                            <span>Response within 24 hours</span>
+                        </div>
+                        <div class="contact-option">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Visit Us</h4>
+                            <p>Student Health Center, Room 200</p>
+                            <span>Walk-ins welcome</span>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="quick-links-faq">
+            <div class="container">
+                <h2>Quick Access</h2>
+                <div class="quick-links-grid">
+                    <a href="mental.html" class="quick-link">
+                        <i class="fas fa-brain"></i>
+                        <span>Mental Health Resources</span>
+                    </a>
+                    <a href="events.html" class="quick-link">
+                        <i class="fas fa-calendar"></i>
+                        <span>Upcoming Events</span>
+                    </a>
+                    <a href="resources.html" class="quick-link">
+                        <i class="fas fa-book"></i>
+                        <span>Resource Library</span>
+                    </a>
+                    <a href="programs.html" class="quick-link">
+                        <i class="fas fa-heart"></i>
+                        <span>Wellness Programs</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Campus Wellness Hub</h3>
+                    <p>Promoting health and wellness for university students through comprehensive resources and support.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> wellness@university.edu</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Student Health Center, Room 200</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Campus Wellness Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Check for saved theme preference or use system preference
+const currentTheme = localStorage.getItem('theme') || 
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+
+// Apply the current theme
+if (currentTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Show sun icon for dark mode
+} else {
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Show moon icon for light mode
+}
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        document.body.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Switch to moon icon
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Switch to sun icon
+        localStorage.setItem('theme', 'dark');
+    }
+});
+    </script>
+      <script src="js/script.js"></script>
+    <script>
+        // Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Check for saved theme preference or use system preference
+const currentTheme = localStorage.getItem('theme') || 
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+
+// Apply the current theme
+if (currentTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Show sun icon for dark mode
+} else {
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Show moon icon for light mode
+}
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        document.body.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Switch to moon icon
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Switch to sun icon
+        localStorage.setItem('theme', 'dark');
+    }
+});
+    </script>
+    <script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+        
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    // For dropdown parents, don't close the menu immediately
+                    if (!link.parentElement.classList.contains('dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && 
+                !hamburger.contains(e.target) && 
+                !navMenu.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+        
+        // Handle dropdowns on mobile
+        const dropdownToggles = document.querySelectorAll('.dropdown > .nav-link');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdownMenu = this.nextElementSibling;
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu !== dropdownMenu && menu.classList.contains('show')) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdownMenu.classList.toggle('show');
+                }
+            });
+        });
+    }
+});
+
+</script>
+</body>
+</html>

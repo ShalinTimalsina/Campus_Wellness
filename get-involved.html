@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get involved with Campus Wellness Hub through volunteering, donations, and advocacy">
+    <title>Get Involved - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li class="dropdown">
+                        <a href="programs.html" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fitness.html">Fitness Challenges</a></li>
+                            <li><a href="nutrition.html">Nutrition Guidance</a></li>
+                            <li><a href="mental.html">Mental Health</a></li>
+                            <li><a href="addiction.html">Addiction Recovery</a></li>
+                            <li><a href="sleep.html">Sleep Hygiene</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Get Involved</h1>
+                <p>Join us in promoting wellness across campus</p>
+            </div>
+        </section>
+
+        <!-- Involvement Overview -->
+        <section class="involvement-overview">
+            <div class="container">
+                <div class="overview-content">
+                    <h2>Make a Difference in Campus Wellness</h2>
+                    <p>Campus Wellness Hub thrives because of community support. Whether you're a student, faculty member, alum, or community member, there are many ways to contribute to the health and well-being of our student community.</p>
+                    
+                    <div class="impact-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Student Volunteers</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$50K</div>
+                            <div class="stat-label">Raised This Year</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25</div>
+                            <div class="stat-label">Community Partners</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Students Served Monthly</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ways to Get Involved -->
+        <section class="involvement-ways">
+            <div class="container">
+                <h2>Ways to Get Involved</h2>
+                <div class="involvement-grid">
+                    <div class="involvement-card">
+                        <div class="involvement-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Volunteer</h3>
+                        <p>Share your time and skills to directly support fellow students in their wellness journeys.</p>
+                        <ul class="involvement-list">
+                            <li>Peer wellness educators</li>
+                            <li>Event support volunteers</li>
+                            <li>Mentorship programs</li>
+                            <li>Workshop assistants</li>
+                        </ul>
+                        <button class="involvement-btn" onclick="openVolunteerForm()">Apply to Volunteer</button>
+                    </div>
+
+                    <div class="involvement-card">
+                        <div class="involvement-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Donate</h3>
+                        <p>Financial contributions help us expand programs and provide resources to more students.</p>
+                        <ul class="involvement-list">
+                            <li>Program equipment and supplies</li>
+                            <li>Scholarship funds for students</li>
+                            <li>Technology and platform improvements</li>
+                            <li>Training for staff and volunteers</li>
+                        </ul>
+                        <button class="involvement-btn" onclick="openDonationForm()">Make a Donation</button>
+                    </div>
+
+                    <div class="involvement-card">
+                        <div class="involvement-icon">
+                            <i class="fas fa-megaphone"></i>
+                        </div>
+                        <h3>Advocate</h3>
+                        <p>Help spread awareness about mental health and wellness resources on campus.</p>
+                        <ul class="involvement-list">
+                            <li>Social media ambassadors</li>
+                            <li>Campus wellness advocates</li>
+                            <li>Policy and awareness campaigns</li>
+                            <li>Student government liaison</li>
+                        </ul>
+                        <button class="involvement-btn" onclick="openAdvocacyForm()">Join Advocacy</button>
+                    </div>
+
+                    <div class="involvement-card">
+                        <div class="involvement-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Partner</h3>
+                        <p>Organizations and businesses can partner with us to expand our impact and reach.</p>
+                        <ul class="involvement-list">
+                            <li>Corporate wellness partnerships</li>
+                            <li>Local business collaborations</li>
+                            <li>Healthcare provider networks</li>
+                            <li>Community organization alliances</li>
+                        </ul>
+                        <button class="involvement-btn" onclick="openPartnershipForm()">Explore Partnership</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Opportunities -->
+        <section class="volunteer-opportunities">
+            <div class="container">
+                <h2>Current Volunteer Opportunities</h2>
+                <div class="opportunities-list">
+                    <div class="opportunity-item">
+                        <div class="opportunity-header">
+                            <h3>Peer Wellness Educator</h3>
+                            <span class="time-commitment">5-10 hours/week</span>
+                        </div>
+                        <div class="opportunity-content">
+                            <p>Lead wellness workshops, provide peer support, and help develop educational content for fellow students.</p>
+                            <div class="opportunity-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    <li>Current enrolled student (GPA 2.5+)</li>
+                                    <li>Interest in health and wellness</li>
+                                    <li>Strong communication skills</li>
+                                    <li>Complete 20-hour training program</li>
+                                </ul>
+                            </div>
+                            <div class="opportunity-benefits">
+                                <h4>Benefits:</h4>
+                                <ul>
+                                    <li>Leadership development training</li>
+                                    <li>Certificate of completion</li>
+                                    <li>Reference letters</li>
+                                    <li>Scholarship opportunities</li>
+                                </ul>
+                            </div>
+                            <button class="opportunity-btn">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <div class="opportunity-item">
+                        <div class="opportunity-header">
+                            <h3>Event Support Volunteer</h3>
+                            <span class="time-commitment">Flexible</span>
+                        </div>
+                        <div class="opportunity-content">
+                            <p>Help with setup, registration, and coordination of wellness events and workshops.</p>
+                            <div class="opportunity-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    <li>Reliable and punctual</li>
+                                    <li>Friendly and approachable</li>
+                                    <li>Available for weekend events</li>
+                                    <li>Basic orientation required</li>
+                                </ul>
+                            </div>
+                            <div class="opportunity-benefits">
+                                <h4>Benefits:</h4>
+                                <ul>
+                                    <li>Community service hours</li>
+                                    <li>Free access to workshops</li>
+                                    <li>Networking opportunities</li>
+                                    <li>Flexible scheduling</li>
+                                </ul>
+                            </div>
+                            <button class="opportunity-btn">Apply Now</button>
+                        </div>
+                    </div>
+
+                    <div class="opportunity-item">
+                        <div class="opportunity-header">
+                            <h3>Digital Content Creator</h3>
+                            <span class="time-commitment">3-5 hours/week</span>
+                        </div>
+                        <div class="opportunity-content">
+                            <p>Create social media content, blog posts, and digital resources to promote wellness awareness.</p>
+                            <div class="opportunity-requirements">
+                                <h4>Requirements:</h4>
+                                <ul>
+                                    <li>Experience with social media platforms</li>
+                                    <li>Basic graphic design skills</li>
+                                    <li>Creative writing ability</li>
+                                    <li>Understanding of wellness topics</li>
+                                </ul>
+                            </div>
+                            <div class="opportunity-benefits">
+                                <h4>Benefits:</h4>
+                                <ul>
+                                    <li>Portfolio development</li>
+                                    <li>Digital marketing experience</li>
+                                    <li>Creative freedom</li>
+                                    <li>Professional references</li>
+                                </ul>
+                            </div>
+                            <button class="opportunity-btn">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section">
+            <div class="container">
+                <h2>Support Our Mission</h2>
+                <div class="donation-content">
+                    <div class="donation-info">
+                        <h3>Your Donation Makes a Difference</h3>
+                        <p>Every contribution, no matter the size, helps us expand our programs and reach more students who need wellness support.</p>
+                        
+                        <div class="donation-impact">
+                            <h4>How Your Donation Helps:</h4>
+                            <div class="impact-items">
+                                <div class="impact-item">
+                                    <span class="amount">$25</span>
+                                    <span class="description">Provides wellness resources for one student for a month</span>
+                                </div>
+                                <div class="impact-item">
+                                    <span class="amount">$50</span>
+                                    <span class="description">Funds a mental health workshop for 20 students</span>
+                                </div>
+                                <div class="impact-item">
+                                    <span class="amount">$100</span>
+                                    <span class="description">Sponsors fitness equipment for dorm room workouts</span>
+                                </div>
+                                <div class="impact-item">
+                                    <span class="amount">$250</span>
+                                    <span class="description">Supports a full wellness assessment and plan for 10 students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-form">
+                        <h3>Make a Donation</h3>
+                        <form class="donate-form" id="donationForm">
+                            <div class="donation-amounts">
+                                <label class="amount-option">
+                                    <input type="radio" name="amount" value="25">
+                                    <span class="amount-btn">$25</span>
+                                </label>
+                                <label class="amount-option">
+                                    <input type="radio" name="amount" value="50">
+                                    <span class="amount-btn">$50</span>
+                                </label>
+                                <label class="amount-option">
+                                    <input type="radio" name="amount" value="100">
+                                    <span class="amount-btn">$100</span>
+                                </label>
+                                <label class="amount-option">
+                                    <input type="radio" name="amount" value="250">
+                                    <span class="amount-btn">$250</span>
+                                </label>
+                                <label class="amount-option">
+                                    <input type="radio" name="amount" value="custom">
+                                    <span class="amount-btn">Other</span>
+                                </label>
+                            </div>
+
+                            <div class="custom-amount" id="customAmount" style="display: none;">
+                                <label for="customAmountInput">Custom Amount</label>
+                                <input type="number" id="customAmountInput" name="customAmountInput" placeholder="Enter amount" min="1">
+                            </div>
+
+                            <div class="donation-frequency">
+                                <label class="frequency-option">
+                                    <input type="radio" name="frequency" value="one-time" checked>
+                                    <span>One-time</span>
+                                </label>
+                                <label class="frequency-option">
+                                    <input type="radio" name="frequency" value="monthly">
+                                    <span>Monthly</span>
+                                </label>
+                                <label class="frequency-option">
+                                    <input type="radio" name="frequency" value="yearly">
+                                    <span>Yearly</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="donorName">Full Name</label>
+                                <input type="text" id="donorName" name="donorName" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="donorEmail">Email Address</label>
+                                <input type="email" id="donorEmail" name="donorEmail" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="donationPurpose">Designation (Optional)</label>
+                                <select id="donationPurpose" name="donationPurpose">
+                                    <option value="general">General Fund</option>
+                                    <option value="mental-health">Mental Health Programs</option>
+                                    <option value="fitness">Fitness Programs</option>
+                                    <option value="nutrition">Nutrition Programs</option>
+                                    <option value="equipment">Equipment and Supplies</option>
+                                    <option value="scholarships">Student Scholarships</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="anonymous" name="anonymous">
+                                    <span class="checkmark"></span>
+                                    Make this donation anonymous
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="updates" name="updates" checked>
+                                    <span class="checkmark"></span>
+                                    Send me updates on how my donation is making an impact
+                                </label>
+                            </div>
+
+                            <div class="donation-actions">
+                                <button type="submit" class="btn btn-primary">Donate Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Stories -->
+        <section class="student-stories">
+            <div class="container">
+                <h2>Stories of Impact</h2>
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <div class="story-quote">
+                            <p>"Volunteering as a peer educator changed my perspective on mental health. I learned so much about myself while helping others navigate their wellness journeys."</p>
+                        </div>
+                        <div class="story-author">
+                            <span class="author-name">Alex M.</span>
+                            <span class="author-role">Peer Wellness Educator</span>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-quote">
+                            <p>"The scholarship I received through Campus Wellness Hub allowed me to focus on my studies without worrying about affording mental health support."</p>
+                        </div>
+                        <div class="story-author">
+                            <span class="author-name">Maria R.</span>
+                            <span class="author-role">Scholarship Recipient</span>
+                        </div>
+                    </div>
+
+                    <div class="story-card">
+                        <div class="story-quote">
+                            <p>"Being part of the advocacy team gave me a voice in campus wellness policy. We successfully pushed for 24/7 crisis support services."</p>
+                        </div>
+                        <div class="story-author">
+                            <span class="author-name">Jordan L.</span>
+                            <span class="author-role">Wellness Advocate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Partners -->
+        <section class="corporate-partners">
+            <div class="container">
+                <h2>Our Partners</h2>
+                <p>We're grateful for the support of our community and corporate partners who help make our programs possible.</p>
+                
+                <div class="partners-grid">
+                    <div class="partner-logo">
+                        <i class="fas fa-building"></i>
+                        <span>Local Health System</span>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-store"></i>
+                        <span>Community Wellness Center</span>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-hospital"></i>
+                        <span>University Medical Center</span>
+                    </div>
+                    <div class="partner-logo">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Campus Recreation</span>
+                    </div>
+                </div>
+
+                <div class="partnership-info">
+                    <h3>Interested in Partnering?</h3>
+                    <p>We're always looking for new partners who share our commitment to student wellness. Contact us to explore collaboration opportunities.</p>
+                    <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Application Modal -->
+        <div class="modal" id="volunteerModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Volunteer Application</h3>
+                    <button class="modal-close" onclick="closeModal('volunteerModal')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form class="volunteer-form" id="volunteerForm">
+                        <div class="form-group">
+                            <label for="volName">Full Name</label>
+                            <input type="text" id="volName" name="volName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="volEmail">Email Address</label>
+                            <input type="email" id="volEmail" name="volEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="volPhone">Phone Number</label>
+                            <input type="tel" id="volPhone" name="volPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="volStudentId">Student ID (if applicable)</label>
+                            <input type="text" id="volStudentId" name="volStudentId">
+                        </div>
+                        <div class="form-group">
+                            <label for="volInterest">Areas of Interest</label>
+                            <select id="volInterest" name="volInterest" required>
+                                <option value="">Select an area</option>
+                                <option value="peer-educator">Peer Wellness Educator</option>
+                                <option value="event-support">Event Support</option>
+                                <option value="content-creation">Digital Content Creation</option>
+                                <option value="advocacy">Wellness Advocacy</option>
+                                <option value="mentorship">Peer Mentorship</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="volAvailability">Weekly Availability</label>
+                            <select id="volAvailability" name="volAvailability" required>
+                                <option value="">Select availability</option>
+                                <option value="1-3">1-3 hours per week</option>
+                                <option value="4-6">4-6 hours per week</option>
+                                <option value="7-10">7-10 hours per week</option>
+                                <option value="10+">More than 10 hours per week</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="volExperience">Relevant Experience</label>
+                            <textarea id="volExperience" name="volExperience" rows="4" placeholder="Describe any relevant experience or skills..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="volMotivation">Why do you want to volunteer?</label>
+                            <textarea id="volMotivation" name="volMotivation" rows="4" required placeholder="Tell us about your motivation..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-outline" onclick="closeModal('volunteerModal')">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Make a Difference?</h2>
+                    <p>Join our community of supporters and help create a healthier, more supportive campus environment for all students.</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="openVolunteerForm()">Volunteer Today</button>
+                        <button class="btn btn-outline" onclick="openDonationForm()">Make a Donation</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Campus Wellness Hub</h3>
+                    <p>Promoting health and wellness for university students through comprehensive resources and support.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="get-involved.html">Get Involved</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> wellness@university.edu</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Student Health Center, Room 200</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Campus Wellness Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Check for saved theme preference or use system preference
+const currentTheme = localStorage.getItem('theme') || 
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+
+// Apply the current theme
+if (currentTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Show sun icon for dark mode
+} else {
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Show moon icon for light mode
+}
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        document.body.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Switch to moon icon
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Switch to sun icon
+        localStorage.setItem('theme', 'dark');
+    }
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Techniques Assessment - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <a href="resources.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Resources
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 2rem 1rem; max-width: 900px;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="background-color: var(--color-secondary); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem;">
+                Academic Support • Assessment Tool
+            </div>
+            <h1 style="color: var(--color-text-primary);">Study Techniques Assessment</h1>
+            <p style="color: var(--color-text-secondary); font-size: 1.1rem;">Discover your learning style and get personalized study recommendations</p>
+        </div>
+
+        <!-- Assessment Form -->
+        <div id="assessmentForm" style="background-color: var(--color-surface); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h3><i class="fas fa-clipboard-list"></i> Learning Style Assessment</h3>
+                <div style="background: var(--color-background); padding: 0.5rem 1rem; border-radius: 20px;">
+                    <span style="color: var(--color-text-secondary); font-size: 0.9rem;">
+                        Question <span id="currentQuestion">1</span> of <span id="totalQuestions">12</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div style="background: var(--color-background); border-radius: 20px; height: 8px; margin-bottom: 2rem; overflow: hidden;">
+                <div id="progressBar" style="background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); height: 100%; width: 8.33%; transition: width 0.3s ease;"></div>
+            </div>
+
+            <!-- Question Container -->
+            <div id="questionContainer">
+                <!-- Questions will be populated by JavaScript -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                <button id="prevBtn" class="btn btn-outline" onclick="previousQuestion()" style="visibility: hidden;">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()" disabled>
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section (Initially Hidden) -->
+        <div id="resultsSection" style="display: none; background-color: var(--color-surface); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md); margin-top: 2rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2><i class="fas fa-star"></i> Your Learning Style Results</h2>
+                <p style="color: var(--color-text-secondary);">Based on your responses, here are your personalized recommendations</p>
+            </div>
+
+            <div id="resultsContent">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="retakeAssessment()" style="margin-right: 1rem;">
+                    <i class="fas fa-redo"></i> Retake Assessment
+                </button>
+                <button class="btn btn-secondary" onclick="saveResults()">
+                    <i class="fas fa-save"></i> Save Results
+                </button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="resources.html" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i> Back to Resources
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+
+        // Assessment questions and data
+        const questions = [
+            {
+                question: "When learning new information, you prefer to:",
+                options: [
+                    { text: "Read detailed written explanations", type: "reading" },
+                    { text: "Listen to lectures or audio recordings", type: "auditory" },
+                    { text: "See diagrams, charts, or visual aids", type: "visual" },
+                    { text: "Practice hands-on activities or exercises", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "During study sessions, you work best:",
+                options: [
+                    { text: "In complete silence", type: "reading" },
+                    { text: "With background music or ambient sounds", type: "auditory" },
+                    { text: "With colorful notes and highlighted materials", type: "visual" },
+                    { text: "While moving around or using fidget tools", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "To remember important information, you:",
+                options: [
+                    { text: "Write detailed notes and summaries", type: "reading" },
+                    { text: "Repeat information out loud or discuss it", type: "auditory" },
+                    { text: "Create mind maps or visual organizers", type: "visual" },
+                    { text: "Use flashcards or practice problems", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "When following directions, you prefer:",
+                options: [
+                    { text: "Written step-by-step instructions", type: "reading" },
+                    { text: "Verbal explanations from someone else", type: "auditory" },
+                    { text: "Diagrams or pictures showing the process", type: "visual" },
+                    { text: "Trying it yourself with guidance", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "Your ideal study environment includes:",
+                options: [
+                    { text: "A quiet library with books and resources", type: "reading" },
+                    { text: "A study group where you can discuss concepts", type: "auditory" },
+                    { text: "A well-lit space with whiteboards or posters", type: "visual" },
+                    { text: "A comfortable space where you can move freely", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "When preparing for exams, you:",
+                options: [
+                    { text: "Re-read textbooks and written notes", type: "reading" },
+                    { text: "Record yourself and listen back to key concepts", type: "auditory" },
+                    { text: "Create visual study guides and color-code materials", type: "visual" },
+                    { text: "Use practice tests and active problem-solving", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "You learn math or science concepts best by:",
+                options: [
+                    { text: "Reading through example problems and solutions", type: "reading" },
+                    { text: "Having concepts explained verbally with reasoning", type: "auditory" },
+                    { text: "Seeing graphs, charts, and visual representations", type: "visual" },
+                    { text: "Working through problems step-by-step yourself", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "When taking notes in class, you:",
+                options: [
+                    { text: "Write everything down in detailed paragraphs", type: "reading" },
+                    { text: "Focus on listening and write key points only", type: "auditory" },
+                    { text: "Use symbols, arrows, and visual organization", type: "visual" },
+                    { text: "Doodle or move while writing to stay focused", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "To understand a complex topic, you need to:",
+                options: [
+                    { text: "Read multiple sources and detailed explanations", type: "reading" },
+                    { text: "Discuss it with others or hear different perspectives", type: "auditory" },
+                    { text: "See examples, diagrams, or real-world applications", type: "visual" },
+                    { text: "Experiment, practice, or apply it hands-on", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "Your attention span is longest when:",
+                options: [
+                    { text: "Reading interesting books or articles", type: "reading" },
+                    { text: "Listening to engaging podcasts or lectures", type: "auditory" },
+                    { text: "Watching educational videos or demonstrations", type: "visual" },
+                    { text: "Actively participating in labs or workshops", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "When stressed about academics, you prefer to:",
+                options: [
+                    { text: "Write in a journal or make lists", type: "reading" },
+                    { text: "Talk through problems with friends or family", type: "auditory" },
+                    { text: "Look at inspirational images or vision boards", type: "visual" },
+                    { text: "Go for a walk or do physical exercise", type: "kinesthetic" }
+                ]
+            },
+            {
+                question: "You remember information best when it's presented:",
+                options: [
+                    { text: "In written format with clear structure", type: "reading" },
+                    { text: "Through stories, discussions, or verbal examples", type: "auditory" },
+                    { text: "With images, colors, and visual connections", type: "visual" },
+                    { text: "Through interactive activities and practice", type: "kinesthetic" }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let scores = { reading: 0, auditory: 0, visual: 0, kinesthetic: 0 };
+
+        // Initialize assessment
+        function initializeAssessment() {
+            document.getElementById('totalQuestions').textContent = questions.length;
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            container.innerHTML = `
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: var(--color-text-primary); margin-bottom: 1.5rem;">${question.question}</h4>
+                    <div style="display: grid; gap: 1rem;">
+                        ${question.options.map((option, index) => `
+                            <label style="
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem;
+                                border: 2px solid var(--color-secondary);
+                                border-radius: 8px;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                background: var(--color-background);
+                            " onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-secondary)'">
+                                <input type="radio" name="question${currentQuestionIndex}" value="${option.type}" style="margin-right: 1rem; transform: scale(1.2);" onchange="selectAnswer('${option.type}')">
+                                <span style="flex: 1;">${option.text}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Update progress
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Update navigation buttons
+            document.getElementById('prevBtn').style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
+            document.getElementById('nextBtn').textContent = currentQuestionIndex === questions.length - 1 ? 'Finish Assessment' : 'Next ';
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById('nextBtn').innerHTML = 'Finish Assessment <i class="fas fa-check"></i>';
+            }
+
+            // Restore previous answer if exists
+            if (answers[currentQuestionIndex]) {
+                const radio = document.querySelector(`input[value="${answers[currentQuestionIndex]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    document.getElementById('nextBtn').disabled = false;
+                }
+            } else {
+                document.getElementById('nextBtn').disabled = true;
+            }
+        }
+
+        function selectAnswer(type) {
+            answers[currentQuestionIndex] = type;
+            document.getElementById('nextBtn').disabled = false;
+            
+            // Visual feedback for selection
+            const labels = document.querySelectorAll('label');
+            labels.forEach(label => {
+                const radio = label.querySelector('input[type="radio"]');
+                if (radio.checked) {
+                    label.style.borderColor = 'var(--color-primary)';
+                    label.style.background = 'rgba(69, 123, 157, 0.1)';
+                } else {
+                    label.style.borderColor = 'var(--color-secondary)';
+                    label.style.background = 'var(--color-background)';
+                }
+            });
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function calculateResults() {
+            // Reset scores
+            scores = { reading: 0, auditory: 0, visual: 0, kinesthetic: 0 };
+            
+            // Calculate scores based on answers
+            Object.values(answers).forEach(answer => {
+                scores[answer]++;
+            });
+
+            // Find dominant learning style
+            const dominantStyle = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            
+            displayResults(dominantStyle);
+        }
+
+        function displayResults(dominantStyle) {
+            document.getElementById('assessmentForm').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'block';
+
+            const styleData = {
+                reading: {
+                    title: "Reading/Writing Learner",
+                    icon: "fas fa-book",
+                    description: "You learn best through written words and text-based materials.",
+                    color: "var(--color-primary)",
+                    strategies: [
+                        "Take detailed written notes during lectures",
+                        "Create comprehensive study guides and outlines",
+                        "Use flashcards with written definitions",
+                        "Read textbooks and supplementary materials thoroughly",
+                        "Write summaries of key concepts in your own words",
+                        "Use lists, bullet points, and organized written formats"
+                    ],
+                    study_tips: [
+                        "Schedule regular reading sessions in quiet environments",
+                        "Use highlighting and annotation techniques effectively",
+                        "Create written practice tests and quizzes",
+                        "Join online discussion forums related to your subjects"
+                    ]
+                },
+                auditory: {
+                    title: "Auditory Learner",
+                    icon: "fas fa-volume-up",
+                    description: "You learn best through listening and verbal communication.",
+                    color: "var(--color-success)",
+                    strategies: [
+                        "Record lectures and listen to them while reviewing",
+                        "Participate actively in class discussions",
+                        "Study with others and explain concepts out loud",
+                        "Use verbal mnemonics and rhymes to remember information",
+                        "Listen to educational podcasts and audiobooks",
+                        "Read your notes aloud during study sessions"
+                    ],
+                    study_tips: [
+                        "Find a study partner or join study groups",
+                        "Use text-to-speech software for reading materials",
+                        "Study in environments with soft background music",
+                        "Practice presentations and verbal explanations"
+                    ]
+                },
+                visual: {
+                    title: "Visual Learner",
+                    icon: "fas fa-eye",
+                    description: "You learn best through visual aids and graphical representations.",
+                    color: "var(--color-warning)",
+                    strategies: [
+                        "Create mind maps and concept diagrams",
+                        "Use color-coding for different subjects or topics",
+                        "Watch educational videos and visual demonstrations",
+                        "Draw diagrams and charts to represent information",
+                        "Use infographics and visual study materials",
+                        "Organize information spatially on pages"
+                    ],
+                    study_tips: [
+                        "Study in well-lit areas with good visual clarity",
+                        "Use highlighters and colored pens for note-taking",
+                        "Create visual timelines for historical events",
+                        "Use graphic organizers for complex topics"
+                    ]
+                },
+                kinesthetic: {
+                    title: "Kinesthetic Learner",
+                    icon: "fas fa-running",
+                    description: "You learn best through hands-on activities and physical movement.",
+                    color: "var(--color-accent)",
+                    strategies: [
+                        "Take frequent breaks to move around during study sessions",
+                        "Use hands-on activities and experiments when possible",
+                        "Walk or pace while reviewing materials",
+                        "Use manipulatives and physical models",
+                        "Practice skills through repetition and application",
+                        "Engage in role-playing and simulations"
+                    ],
+                    study_tips: [
+                        "Study in different locations to maintain engagement",
+                        "Use stress balls or fidget tools while reading",
+                        "Create physical flashcards you can manipulate",
+                        "Take advantage of lab sessions and practical exercises"
+                    ]
+                }
+            };
+
+            const style = styleData[dominantStyle];
+            const secondaryStyles = Object.keys(scores)
+                .filter(s => s !== dominantStyle)
+                .sort((a, b) => scores[b] - scores[a]);
+
+            document.getElementById('resultsContent').innerHTML = `
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="
+                        width: 120px;
+                        height: 120px;
+                        background: ${style.color};
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 1rem;
+                        box-shadow: var(--shadow-lg);
+                    ">
+                        <i class="${style.icon}" style="font-size: 3rem; color: white;"></i>
+                    </div>
+                    <h3 style="color: ${style.color}; margin-bottom: 1rem;">${style.title}</h3>
+                    <p style="font-size: 1.1rem; color: var(--color-text-secondary); max-width: 500px; margin: 0 auto;">${style.description}</p>
+                </div>
+
+                <!-- Score Breakdown -->
+                <div style="background: var(--color-background); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4 style="text-align: center; margin-bottom: 1rem;"><i class="fas fa-chart-bar"></i> Your Learning Style Breakdown</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        ${Object.keys(scores).map(type => {
+                            const percentage = (scores[type] / questions.length * 100).toFixed(0);
+                            const typeColors = {
+                                reading: 'var(--color-primary)',
+                                auditory: 'var(--color-success)', 
+                                visual: 'var(--color-warning)',
+                                kinesthetic: 'var(--color-accent)'
+                            };
+                            return `
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.5rem; font-weight: bold; color: ${typeColors[type]};">${percentage}%</div>
+                                    <div style="text-transform: capitalize; color: var(--color-text-secondary);">${type}</div>
+                                    <div style="background: var(--color-secondary); height: 8px; border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
+                                        <div style="background: ${typeColors[type]}; height: 100%; width: ${percentage}%; transition: width 0.3s ease;"></div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+
+                <!-- Personalized Strategies -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="border-left: 4px solid ${style.color}; padding: 1.5rem; background: rgba(69, 123, 157, 0.05); border-radius: 0 8px 8px 0;">
+                        <h4><i class="fas fa-lightbulb"></i> Recommended Study Strategies</h4>
+                        <ul style="margin-top: 1rem;">
+                            ${style.strategies.map(strategy => `<li style="margin-bottom: 0.5rem;">${strategy}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div style="border-left: 4px solid var(--color-success); padding: 1.5rem; background: rgba(42, 157, 143, 0.05); border-radius: 0 8px 8px 0;">
+                        <h4><i class="fas fa-star"></i> Study Environment Tips</h4>
+                        <ul style="margin-top: 1rem;">
+                            ${style.study_tips.map(tip => `<li style="margin-bottom: 0.5rem;">${tip}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Secondary Learning Styles -->
+                ${secondaryStyles.length > 0 && scores[secondaryStyles[0]] > 0 ? `
+                    <div style="background: var(--color-surface); border: 1px solid var(--color-secondary); padding: 1.5rem; border-radius: 8px;">
+                        <h4><i class="fas fa-plus-circle"></i> Additional Strategies to Try</h4>
+                        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">You also showed some affinity for ${secondaryStyles[0]} learning. Consider incorporating these techniques:</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                            ${secondaryStyles.slice(0, 2).map(type => {
+                                const data = styleData[type];
+                                return `
+                                    <div style="padding: 1rem; background: var(--color-background); border-radius: 6px;">
+                                        <h5 style="color: ${data.color}; margin-bottom: 0.5rem;">
+                                            <i class="${data.icon}"></i> ${data.title}
+                                        </h5>
+                                        <ul style="font-size: 0.9rem;">
+                                            ${data.strategies.slice(0, 3).map(strategy => `<li style="margin-bottom: 0.3rem;">${strategy}</li>`).join('')}
+                                        </ul>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            // Save results to localStorage
+            const results = {
+                dominantStyle,
+                scores,
+                date: new Date().toISOString(),
+                styleData: style
+            };
+            localStorage.setItem('learningStyleResults', JSON.stringify(results));
+
+            showNotification('Assessment complete! Your results have been saved.', 'success');
+        }
+
+        function retakeAssessment() {
+            currentQuestionIndex = 0;
+            answers = {};
+            scores = { reading: 0, auditory: 0, visual: 0, kinesthetic: 0 };
+            
+            document.getElementById('resultsSection').style.display = 'none';
+            document.getElementById('assessmentForm').style.display = 'block';
+            
+            displayQuestion();
+        }
+
+        function saveResults() {
+            const results = JSON.parse(localStorage.getItem('learningStyleResults'));
+            if (!results) return;
+
+            const content = `
+LEARNING STYLE ASSESSMENT RESULTS
+Date: ${new Date(results.date).toLocaleDateString()}
+
+PRIMARY LEARNING STYLE: ${results.styleData.title}
+${results.styleData.description}
+
+SCORE BREAKDOWN:
+- Reading/Writing: ${results.scores.reading}/${questions.length} (${(results.scores.reading/questions.length*100).toFixed(0)}%)
+- Auditory: ${results.scores.auditory}/${questions.length} (${(results.scores.auditory/questions.length*100).toFixed(0)}%)
+- Visual: ${results.scores.visual}/${questions.length} (${(results.scores.visual/questions.length*100).toFixed(0)}%)
+- Kinesthetic: ${results.scores.kinesthetic}/${questions.length} (${(results.scores.kinesthetic/questions.length*100).toFixed(0)}%)
+
+RECOMMENDED STRATEGIES:
+${results.styleData.strategies.map((strategy, index) => `${index + 1}. ${strategy}`).join('\n')}
+
+STUDY TIPS:
+${results.styleData.study_tips.map((tip, index) => `${index + 1}. ${tip}`).join('\n')}
+
+For more resources, visit: Campus Wellness Hub
+            `;
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `learning-style-results-${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+            showNotification('Results saved to your device!', 'success');
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-${type === 'success' ? 'success' : type === 'error' ? 'error' : 'primary'});
+                color: white;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation' : 'info'}-circle"></i>
+                    <span>${message}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 5px; right: 10px; background: none; border: none; color: white; cursor: pointer;">×</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Initialize the assessment when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAssessment();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && currentQuestionIndex > 0) {
+                previousQuestion();
+            } else if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) {
+                nextQuestion();
+            }
+        });
+    </script>
+</body>
+</html>

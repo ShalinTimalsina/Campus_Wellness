@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <a href="resources.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Back to Resources
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding: 2rem 1rem; max-width: 1000px;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="background-color: var(--color-secondary); color: var(--color-primary); padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem;">
+                Academic Support • Interactive Tool
+            </div>
+            <h1 style="color: var(--color-text-primary);">Smart Study Planner</h1>
+            <p style="color: var(--color-text-secondary); font-size: 1.1rem;">An intelligent planning tool that helps organize your study schedule and optimize learning efficiency</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2rem;">
+            <!-- Sidebar Controls -->
+            <div style="background-color: var(--color-surface); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-md); height: fit-content;">
+                <h3><i class="fas fa-plus-circle"></i> Add Study Session</h3>
+                
+                <form id="studyForm" onsubmit="addStudySession(event)">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="e.g., Biology" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <input type="text" id="topic" placeholder="e.g., Cell Biology" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studyDate">Date</label>
+                        <input type="date" id="studyDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studyTime">Time</label>
+                        <input type="time" id="studyTime" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <select id="duration" required>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60" selected>1 hour</option>
+                            <option value="90">1.5 hours</option>
+                            <option value="120">2 hours</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority" required>
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-plus"></i> Add Session
+                    </button>
+                </form>
+                
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-secondary);">
+                    <h4><i class="fas fa-chart-pie"></i> Study Stats</h4>
+                    <div id="studyStats" style="font-size: 0.9rem; color: var(--color-text-secondary);">
+                        <p><strong>Total Sessions:</strong> <span id="totalSessions">0</span></p>
+                        <p><strong>Total Hours:</strong> <span id="totalHours">0</span></p>
+                        <p><strong>This Week:</strong> <span id="weekSessions">0</span> sessions</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div style="background-color: var(--color-surface); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3><i class="fas fa-calendar-alt"></i> Study Schedule</h3>
+                    <div>
+                        <button class="btn btn-secondary" onclick="exportSchedule()">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button class="btn btn-outline" onclick="clearSchedule()">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="studySchedule" style="min-height: 400px;">
+                    <div style="text-align: center; padding: 3rem; color: var(--color-text-light);">
+                        <i class="fas fa-calendar-plus" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                        <p>No study sessions scheduled yet.</p>
+                        <p>Add your first session using the form on the left!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Study Tips Section -->
+        <div style="background-color: var(--color-surface); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+            <h3><i class="fas fa-lightbulb"></i> Smart Study Tips</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                <div style="background-color: rgba(42, 157, 143, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--color-success);">
+                    <h4><i class="fas fa-clock"></i> Time Management</h4>
+                    <ul style="font-size: 0.9rem; margin: 0;">
+                        <li>Use the Pomodoro Technique (25-min focused sessions)</li>
+                        <li>Take 5-minute breaks between sessions</li>
+                        <li>Schedule challenging subjects during peak hours</li>
+                        <li>Build buffer time for unexpected delays</li>
+                    </ul>
+                </div>
+                
+                <div style="background-color: rgba(69, 123, 157, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--color-primary);">
+                    <h4><i class="fas fa-brain"></i> Learning Optimization</h4>
+                    <ul style="font-size: 0.9rem; margin: 0;">
+                        <li>Review material within 24 hours of learning</li>
+                        <li>Use active recall instead of passive reading</li>
+                        <li>Create visual mind maps for complex topics</li>
+                        <li>Teach concepts to others to reinforce understanding</li>
+                    </ul>
+                </div>
+                
+                <div style="background-color: rgba(244, 162, 97, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--color-warning);">
+                    <h4><i class="fas fa-balance-scale"></i> Wellness Balance</h4>
+                    <ul style="font-size: 0.9rem; margin: 0;">
+                        <li>Include regular breaks for meals and hydration</li>
+                        <li>Schedule physical activity between study blocks</li>
+                        <li>Maintain consistent sleep schedule</li>
+                        <li>Plan social activities to prevent burnout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="resources.html" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Back to Resources
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+
+        // Study planner functionality
+        let studySessions = JSON.parse(localStorage.getItem('studySessions')) || [];
+
+        // Set default date to today
+        document.getElementById('studyDate').value = new Date().toISOString().split('T')[0];
+        
+        // Set default time to current hour
+        const now = new Date();
+        document.getElementById('studyTime').value = `${String(now.getHours()).padStart(2, '0')}:00`;
+
+        function addStudySession(event) {
+            event.preventDefault();
+            
+            const session = {
+                id: Date.now(),
+                subject: document.getElementById('subject').value,
+                topic: document.getElementById('topic').value,
+                date: document.getElementById('studyDate').value,
+                time: document.getElementById('studyTime').value,
+                duration: parseInt(document.getElementById('duration').value),
+                priority: document.getElementById('priority').value,
+                completed: false,
+                createdAt: new Date().toISOString()
+            };
+            
+            studySessions.push(session);
+            localStorage.setItem('studySessions', JSON.stringify(studySessions));
+            
+            document.getElementById('studyForm').reset();
+            // Reset defaults
+            document.getElementById('studyDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('studyTime').value = `${String(now.getHours()).padStart(2, '0')}:00`;
+            document.getElementById('duration').value = '60';
+            document.getElementById('priority').value = 'medium';
+            
+            renderSchedule();
+            updateStats();
+            
+            showNotification('Study session added successfully!', 'success');
+        }
+
+        function renderSchedule() {
+            const container = document.getElementById('studySchedule');
+            
+            if (studySessions.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--color-text-light);">
+                        <i class="fas fa-calendar-plus" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                        <p>No study sessions scheduled yet.</p>
+                        <p>Add your first session using the form on the left!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort sessions by date and time
+            const sortedSessions = [...studySessions].sort((a, b) => {
+                const dateA = new Date(`${a.date}T${a.time}`);
+                const dateB = new Date(`${b.date}T${b.time}`);
+                return dateA - dateB;
+            });
+            
+            const today = new Date().toISOString().split('T')[0];
+            const upcomingSessions = sortedSessions.filter(s => s.date >= today);
+            const pastSessions = sortedSessions.filter(s => s.date < today);
+            
+            let html = '';
+            
+            if (upcomingSessions.length > 0) {
+                html += '<h4 style="color: var(--color-primary); margin-bottom: 1rem;"><i class="fas fa-calendar-day"></i> Upcoming Sessions</h4>';
+                upcomingSessions.forEach(session => {
+                    html += renderSessionCard(session, false);
+                });
+            }
+            
+            if (pastSessions.length > 0) {
+                html += '<h4 style="color: var(--color-text-light); margin-top: 2rem; margin-bottom: 1rem;"><i class="fas fa-history"></i> Past Sessions</h4>';
+                pastSessions.forEach(session => {
+                    html += renderSessionCard(session, true);
+                });
+            }
+            
+            container.innerHTML = html;
+        }
+
+        function renderSessionCard(session, isPast) {
+            const priorityColors = {
+                low: 'var(--color-text-light)',
+                medium: 'var(--color-warning)',
+                high: 'var(--color-accent)',
+                urgent: 'var(--color-error)'
+            };
+            
+            const date = new Date(`${session.date}T${session.time}`);
+            const formattedDate = date.toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            const formattedTime = date.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            
+            return `
+                <div class="study-session-card" style="
+                    background: ${isPast ? 'var(--color-background)' : 'var(--color-surface)'};
+                    border: 1px solid var(--color-secondary);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    margin-bottom: 0.5rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    opacity: ${isPast ? '0.7' : '1'};
+                    transition: all 0.2s ease;
+                " onmouseover="this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.boxShadow='none'">
+                    <div style="flex: 1;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <h5 style="margin: 0; color: var(--color-text-primary);">${session.subject}</h5>
+                            <span style="
+                                background: ${priorityColors[session.priority]};
+                                color: white;
+                                padding: 0.2rem 0.5rem;
+                                border-radius: 12px;
+                                font-size: 0.7rem;
+                                text-transform: uppercase;
+                                font-weight: bold;
+                            ">${session.priority}</span>
+                        </div>
+                        <p style="margin: 0 0 0.5rem 0; color: var(--color-text-secondary); font-size: 0.9rem;">${session.topic}</p>
+                        <div style="display: flex; gap: 1rem; font-size: 0.8rem; color: var(--color-text-light);">
+                            <span><i class="fas fa-calendar"></i> ${formattedDate}</span>
+                            <span><i class="fas fa-clock"></i> ${formattedTime}</span>
+                            <span><i class="fas fa-hourglass-half"></i> ${session.duration} min</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        ${!isPast ? `
+                            <button onclick="toggleComplete(${session.id})" class="btn btn-secondary" style="padding: 0.5rem;">
+                                <i class="fas fa-${session.completed ? 'undo' : 'check'}"></i>
+                            </button>
+                        ` : ''}
+                        <button onclick="removeSession(${session.id})" class="btn btn-outline" style="padding: 0.5rem;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleComplete(sessionId) {
+            const sessionIndex = studySessions.findIndex(s => s.id === sessionId);
+            if (sessionIndex > -1) {
+                studySessions[sessionIndex].completed = !studySessions[sessionIndex].completed;
+                localStorage.setItem('studySessions', JSON.stringify(studySessions));
+                renderSchedule();
+                updateStats();
+                
+                const status = studySessions[sessionIndex].completed ? 'completed' : 'unmarked as complete';
+                showNotification(`Session ${status}!`, 'success');
+            }
+        }
+
+        function removeSession(sessionId) {
+            if (confirm('Are you sure you want to remove this study session?')) {
+                studySessions = studySessions.filter(s => s.id !== sessionId);
+                localStorage.setItem('studySessions', JSON.stringify(studySessions));
+                renderSchedule();
+                updateStats();
+                showNotification('Session removed!', 'info');
+            }
+        }
+
+        function updateStats() {
+            const totalSessions = studySessions.length;
+            const totalHours = studySessions.reduce((sum, session) => sum + session.duration, 0) / 60;
+            
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const weekSessions = studySessions.filter(session => 
+                new Date(session.date) >= oneWeekAgo
+            ).length;
+            
+            document.getElementById('totalSessions').textContent = totalSessions;
+            document.getElementById('totalHours').textContent = totalHours.toFixed(1);
+            document.getElementById('weekSessions').textContent = weekSessions;
+        }
+
+        function exportSchedule() {
+            if (studySessions.length === 0) {
+                showNotification('No sessions to export!', 'error');
+                return;
+            }
+            
+            const csvContent = [
+                'Subject,Topic,Date,Time,Duration (min),Priority,Completed',
+                ...studySessions.map(session => 
+                    `"${session.subject}","${session.topic}","${session.date}","${session.time}",${session.duration},"${session.priority}",${session.completed}`
+                )
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `study-schedule-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            
+            showNotification('Schedule exported successfully!', 'success');
+        }
+
+        function clearSchedule() {
+            if (confirm('Are you sure you want to clear all study sessions? This cannot be undone.')) {
+                studySessions = [];
+                localStorage.removeItem('studySessions');
+                renderSchedule();
+                updateStats();
+                showNotification('All sessions cleared!', 'info');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-${type === 'success' ? 'success' : type === 'error' ? 'error' : 'primary'});
+                color: white;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: var(--shadow-lg);
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation' : 'info'}-circle"></i>
+                    <span>${message}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 5px; right: 10px; background: none; border: none; color: white; cursor: pointer;">×</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderSchedule();
+            updateStats();
+        });
+    </script>
+</body>
+</html>

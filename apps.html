@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Apps</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: #2d6a4f;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .app-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .app-card h3 {
+      margin-top: 0;
+      color: #2d6a4f;
+    }
+
+    .app-card p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #2d6a4f;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #1b4332;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Wellness Apps</h1>
+    <p>Explore our recommended mobile apps for meditation, fitness tracking, and mental health support.</p>
+  </header>
+
+  <!-- App Cards -->
+  <section class="container">
+    <div class="apps-grid">
+
+      <!-- Meditation App -->
+      <div class="app-card">
+        <h3>🧘 Calm</h3>
+        <p>A meditation and relaxation app designed to reduce stress, improve sleep, and boost mindfulness.</p>
+        <a href="https://www.calm.com/" target="_blank" class="btn">Visit App</a>
+      </div>
+
+      <!-- Fitness App -->
+      <div class="app-card">
+        <h3>🏋️ MyFitnessPal</h3>
+        <p>A fitness tracking app to log workouts, track calories, and monitor progress towards health goals.</p>
+        <a href="https://www.myfitnesspal.com/" target="_blank" class="btn">Visit App</a>
+      </div>
+
+      <!-- Sleep App -->
+      <div class="app-card">
+        <h3>😴 Sleep Cycle</h3>
+        <p>Smart alarm clock that analyzes your sleep patterns and helps you wake up feeling refreshed.</p>
+        <a href="https://www.sleepcycle.com/" target="_blank" class="btn">Visit App</a>
+      </div>
+
+      <!-- Mental Health App -->
+      <div class="app-card">
+        <h3>💬 TalkLife</h3>
+        <p>A peer-support mental health app where you can share struggles and connect with others worldwide.</p>
+        <a href="https://talklife.co/" target="_blank" class="btn">Visit App</a>
+      </div>
+
+      <!-- Yoga App -->
+      <div class="app-card">
+        <h3>🧎‍♀️ Down Dog</h3>
+        <p>A yoga app that offers customizable sessions for all levels, from beginner to advanced.</p>
+        <a href="https://www.downdogapp.com/" target="_blank" class="btn">Visit App</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

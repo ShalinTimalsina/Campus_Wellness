@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nutrition guidance and meal planning resources for university students">
+    <title>Nutrition Guidance - Campus Wellness Hub</title>
+     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #457B9D;
+            --secondary-color: #2196F3;
+            --accent-color: #FF9800;
+            --text-color: #333;
+            --light-text: #666;
+            --background-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --footer-bg: #2c3e50;
+            --footer-text: #ecf0f1;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --text-color: #f0f0f0;
+            --light-text: #b0b0b0;
+            --background-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --header-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: var(--header-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            width: 200px;
+            display: none;
+            list-style: none;
+            border-radius: 4px;
+            z-index: 10;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 15px;
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Video Categories */
+        .video-categories-section {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .video-categories-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .video-categories-section p {
+            margin-bottom: 30px;
+            color: var(--light-text);
+        }
+
+        .meal-video-categories {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .meal-video-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 160px;
+            text-align: center;
+        }
+
+        .meal-video-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .meal-video-btn i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .meal-video-btn h4 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        /* Video Modal Styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+            background: none;
+            border: none;
+            z-index: 10;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Nutrition Overview */
+        .nutrition-overview {
+            padding: 60px 0;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .overview-content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+        }
+
+        .overview-content > p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+
+        .nutrition-pillars {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pillar {
+            text-align: center;
+            max-width: 250px;
+            padding: 25px;
+            background-color: var(--background-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .pillar i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .pillar h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .pillar p {
+            color: var(--light-text);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3, .footer-section h4 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--card-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                display: none;
+                margin-top: 10px;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .meal-video-categories {
+                gap: 15px;
+            }
+            
+            .meal-video-btn {
+                width: 140px;
+                padding: 20px 15px;
+            }
+            
+            .meal-video-btn i {
+                font-size: 32px;
+            }
+
+            .nutrition-pillars {
+                gap: 20px;
+            }
+
+            .pillar {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .meal-video-btn {
+                width: 120px;
+                padding: 15px 10px;
+            }
+            
+            .meal-video-btn i {
+                font-size: 28px;
+            }
+            
+            .meal-video-btn h4 {
+                font-size: 16px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li class="dropdown">
+                        <a href="programs.html" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fitness.html">Fitness Challenges</a></li>
+                            <li><a href="nutrition.html" class="active">Nutrition Guidance</a></li>
+                            <li><a href="mental.html">Mental Health</a></li>
+                            <li><a href="addiction.html">Addiction Recovery</a></li>
+                            <li><a href="sleep.html">Sleep Hygiene</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Nutrition Guidance</h1>
+                <p>Healthy eating made simple for student life</p>
+            </div>
+        </section>
+
+        <!-- Video Categories -->
+        <section class="video-categories-section">
+            <div class="container">
+                <h2>Meal Inspiration Videos</h2>
+                <p>Click on a meal category to watch quick, healthy recipe ideas</p>
+                
+                <div class="meal-video-categories">
+                    <div class="meal-video-btn" data-meal="breakfast">
+                        <i class="fas fa-egg"></i>
+                        <h4>Breakfast</h4>
+                    </div>
+                    <div class="meal-video-btn" data-meal="lunch">
+                        <i class="fas fa-bread-slice"></i>
+                        <h4>Lunch</h4>
+                    </div>
+                    <div class="meal-video-btn" data-meal="dinner">
+                        <i class="fas fa-utensils"></i>
+                        <h4>Dinner</h4>
+                    </div>
+                    <div class="meal-video-btn" data-meal="snacks">
+                        <i class="fas fa-apple-alt"></i>
+                        <h4>Snacks</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+            <div class="modal-content">
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="video-container" id="videoContainer">
+                    <!-- YouTube iframe will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Nutrition Overview -->
+        <section class="nutrition-overview">
+            <div class="container">
+                <div class="overview-content">
+                    <h2>Fuel Your Success</h2>
+                    <p>Good nutrition is the foundation of academic success and overall well-being. Our nutrition program provides practical, evidence-based guidance to help you eat well on a student budget and busy schedule.</p>
+                    <div class="nutrition-pillars">
+                        <div class="pillar">
+                            <i class="fas fa-seedling"></i>
+                            <h3>Plant-Forward</h3>
+                            <p>Emphasis on vegetables, fruits, whole grains, and plant proteins</p>
+                        </div>
+                        <div class="pillar">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h3>Budget-Friendly</h3>
+                            <p>Affordable options that don't compromise on nutrition</p>
+                        </div>
+                        <div class="pillar">
+                            <i class="fas fa-clock"></i>
+                            <h3>Time-Efficient</h3>
+                            <p>Quick and easy meal solutions for busy students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Campus Wellness Hub</h3>
+                        <p>Promoting health and wellness for university students through comprehensive resources and support.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="get-involved.html">Get Involved</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <p><i class="fas fa-envelope"></i> wellness@university.edu</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Student Health Center, Room 200</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Campus Wellness Hub. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+     <script src="js/script.js"></script>
+    <script>
+   
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Switch to moon icon
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Switch to sun icon
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Video Modal Functionality
+        const videoModal = document.getElementById('videoModal');
+        const videoContainer = document.getElementById('videoContainer');
+        const closeModal = document.getElementById('closeModal');
+        const mealButtons = document.querySelectorAll('.meal-video-btn');
+
+        // YouTube video IDs for different meal categories
+        const mealVideos = {
+            breakfast: 't4t1Vj5-NLQ', // Breakfast video
+            lunch: '7hCeh9w6DVU',      // Lunch video
+            dinner: 'Q6kVG71Ekwo',     // Dinner video
+            snacks: 'o61b33Yw7W4'      // Snacks video
+        };
+
+        // Open modal with appropriate video
+        mealButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const mealType = button.getAttribute('data-meal');
+                const videoId = mealVideos[mealType];
+                
+                // Create iframe with the selected video
+                videoContainer.innerHTML = `
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                `;
+                
+                // Show the modal
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            videoContainer.innerHTML = ''; // Remove iframe
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+
+        // Close modal when clicking outside content
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                videoContainer.innerHTML = ''; // Remove iframe
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                videoModal.classList.remove('active');
+                videoContainer.innerHTML = ''; // Remove iframe
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+    </script>
+     </script>
+    <script>
+</body>
+</html>

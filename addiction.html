@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confidential addiction recovery support and resources for university students">
+    <title>Addiction Recovery Support - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles for enhanced responsiveness and functionality */
+        .assessment-result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #4CAF50;
+        }
+        ul{
+            color: black;
+        }
+        .result-content h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .result-recommendations {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 6px;
+        }
+        
+        .tools-content .tool-tab {
+            display: none;
+        }
+        
+        .tools-content .tool-tab.active {
+            display: block;
+        }
+        
+        .tab-btn.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .recovery-principles {
+                flex-direction: column;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .coping-strategies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .counter-display {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .counter-item {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .question-card {
+                padding: 15px;
+            }
+            
+            .answer-options {
+                flex-direction: column;
+            }
+            
+            .answer-options label {
+                margin-bottom: 10px;
+            }
+            
+            .tab-btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Campus Wellness Hub</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li class="dropdown">
+                        <a href="programs.html" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="fitness.html">Fitness Challenges</a></li>
+                            <li><a href="nutrition.html">Nutrition Guidance</a></li>
+                            <li><a href="mental.html">Mental Health</a></li>
+                            <li><a href="addiction.html" class="active">Addiction Recovery</a></li>
+                            <li><a href="sleep.html">Sleep Hygiene</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="login.html" class="nav-link">Login</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Addiction Recovery Support</h1>
+                <p>Confidential, judgment-free support for your recovery journey</p>
+            </div>
+        </section>
+
+        <!-- Confidentiality Notice -->
+        <section class="confidentiality-notice">
+            <div class="container">
+                <div class="notice-banner">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="notice-content">
+                        <h3>Your Privacy is Protected</h3>
+                        <p>All addiction recovery services are strictly confidential. We follow HIPAA guidelines and university policies to ensure your privacy and academic standing are protected.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recovery Overview -->
+        <section class="recovery-overview">
+            <div class="container">
+                <div class="overview-content">
+                    <h2>Recovery is Possible</h2>
+                    <p>Addiction affects many college students, and seeking help is a courageous first step. Our comprehensive recovery support program provides evidence-based treatment, peer support, and practical resources to help you achieve and maintain sobriety while pursuing your education.</p>
+                    
+                    <div class="recovery-principles">
+                        <div class="principle">
+                            <i class="fas fa-user-check"></i>
+                            <h3>Person-Centered</h3>
+                            <p>Your unique needs and goals guide your recovery plan</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-brain"></i>
+                            <h3>Evidence-Based</h3>
+                            <p>Treatments proven effective in research and practice</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-hands-helping"></i>
+                            <h3>Peer Support</h3>
+                            <p>Connect with others who understand your experience</p>
+                        </div>
+                        <div class="principle">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Academic Integration</h3>
+                            <p>Support that works with your educational goals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self-Assessment -->
+        <section class="addiction-assessment">
+            <div class="container">
+                <h2>Substance Use Self-Assessment</h2>
+                <div class="assessment-container">
+                    <div class="assessment-intro">
+                        <p>This brief, confidential assessment can help you understand your relationship with substances. Your responses are private and not stored.</p>
+                        <div class="disclaimer">
+                            <strong>Disclaimer:</strong> This is not a diagnostic tool. For professional assessment, please contact our counseling team.
+                        </div>
+                    </div>
+                    
+                    <div class="assessment-questions">
+                        <div class="question-card">
+                            <h4>In the past 12 months, how often have you used alcohol or drugs more than intended?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="aq1" value="0"> Never</label>
+                                <label><input type="radio" name="aq1" value="1"> Once or twice</label>
+                                <label><input type="radio" name="aq1" value="2"> Monthly</label>
+                                <label><input type="radio" name="aq1" value="3"> Weekly or more</label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h4>Have you unsuccessfully tried to cut down or control your substance use?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="aq2" value="0"> No</label>
+                                <label><input type="radio" name="aq2" value="1"> Yes, once</label>
+                                <label><input type="radio" name="aq2" value="2"> Yes, a few times</label>
+                                <label><input type="radio" name="aq2" value="3"> Yes, many times</label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h4>Has substance use interfered with your academic performance or responsibilities?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="aq3" value="0"> Never</label>
+                                <label><input type="radio" name="aq3" value="1"> Rarely</label>
+                                <label><input type="radio" name="aq3" value="2"> Sometimes</label>
+                                <label><input type="radio" name="aq3" value="3"> Often</label>
+                            </div>
+                        </div>
+
+                        <div class="question-card">
+                            <h4>Do you continue using substances despite problems they cause in relationships?</h4>
+                            <div class="answer-options">
+                                <label><input type="radio" name="aq4" value="0"> No</label>
+                                <label><input type="radio" name="aq4" value="1"> Rarely</label>
+                                <label><input type="radio" name="aq4" value="2"> Sometimes</label>
+                                <label><input type="radio" name="aq4" value="3"> Yes, often</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="assessment-btn" id="assessmentButton">Get My Results</button>
+                    
+                    <div class="assessment-result" id="addictionAssessmentResult">
+                        <div class="result-content">
+                            <h4>Your Results</h4>
+                            <p id="addictionResultText"></p>
+                            <div class="result-recommendations" id="addictionResultRecommendations"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recovery Services -->
+        <section class="recovery-services">
+            <div class="container">
+                <h2>Recovery Support Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3>Individual Counseling</h3>
+                        <p>One-on-one sessions with addiction specialists using evidence-based approaches like CBT, MI, and trauma-informed care.</p>
+                        <ul>
+                            <li>Substance use assessment</li>
+                            <li>Relapse prevention planning</li>
+                            <li>Coping skills development</li>
+                            <li>Co-occurring disorder treatment</li>
+                        </ul>
+                        <a href="contact.html" class="service-btn">Schedule Consultation</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Group Support</h3>
+                        <p>Peer-led and professionally facilitated support groups providing community and shared experiences in recovery.</p>
+                        <ul>
+                            <li>12-step meetings (AA, NA, etc.)</li>
+                            <li>SMART Recovery groups</li>
+                            <li>Student-specific meetings</li>
+                            <li>Family support groups</li>
+                        </ul>
+                        <a href="events.html" class="service-btn">Find Groups</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3>Medication-Assisted Treatment</h3>
+                        <p>Medical support for recovery including medication management and withdrawal support when appropriate.</p>
+                        <ul>
+                            <li>Medical evaluation</li>
+                            <li>Withdrawal management</li>
+                            <li>Medication monitoring</li>
+                            <li>Referral coordination</li>
+                        </ul>
+                        <a href="contact.html" class="service-btn">Medical Consultation</a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Peer Recovery Support</h3>
+                        <p>Connect with trained peer recovery specialists who have lived experience with addiction and recovery.</p>
+                        <ul>
+                            <li>Peer mentorship</li>
+                            <li>Recovery coaching</li>
+                            <li>Sober activities</li>
+                            <li>Academic support</li>
+                        </ul>
+                        <a href="contact.html" class="service-btn">Connect with Peers</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recovery Tools -->
+        <section class="recovery-tools">
+            <div class="container">
+                <h2>Recovery Tools & Resources</h2>
+                <div class="tools-tabs">
+                    <button class="tab-btn active" data-tab="tracking">Recovery Tracking</button>
+                    <button class="tab-btn" data-tab="coping">Coping Strategies</button>
+                    <button class="tab-btn" data-tab="emergency">Emergency Plan</button>
+                </div>
+
+                <div class="tools-content">
+                    <div class="tool-tab active" data-tab-content="tracking">
+                        <div class="recovery-tracker">
+                            <h3>Sobriety Counter</h3>
+                            <div class="sobriety-counter">
+                                <div class="counter-display">
+                                    <div class="counter-item">
+                                        <span class="counter-number" id="daysSober">0</span>
+                                        <span class="counter-label">Days Sober</span>
+                                    </div>
+                                    <div class="counter-item">
+                                        <span class="counter-number" id="moneySaved">$0</span>
+                                        <span class="counter-label">Money Saved</span>
+                                    </div>
+                                    <div class="counter-item">
+                                        <span class="counter-number" id="meetingsAttended">0</span>
+                                        <span class="counter-label">Meetings Attended</span>
+                                    </div>
+                                </div>
+                                <div class="milestone-progress">
+                                    <h4>Set Your Recovery Start Date</h4>
+                                    <input type="date" id="sobrietyDate">
+                                    <button id="setSobrietyDate" class="service-btn">Set Date</button>
+                                    <div class="progress-bar" style="display: none;">
+                                        <div class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-tab" data-tab-content="coping">
+                        <h3>Healthy Coping Strategies</h3>
+                        <div class="coping-strategies-grid">
+                            <div class="strategy-card">
+                                <i class="fas fa-running"></i>
+                                <h4>Physical Activity</h4>
+                                <p>Exercise releases endorphins and reduces stress</p>
+                                <a href="resources.html#workouts" class="strategy-btn">Try 5-Minute Workout</a>
+                            </div>
+                            <div class="strategy-card">
+                                <i class="fas fa-phone"></i>
+                                <h4>Call Support Person</h4>
+                                <p>Reach out to your sponsor, counselor, or trusted friend</p>
+                                <a href="resources.html#contacts" class="strategy-btn">View Contacts</a>
+                            </div>
+                            <div class="strategy-card">
+                                <i class="fas fa-journal-whills"></i>
+                                <h4>Journaling</h4>
+                                <p>Write about your feelings and experiences</p>
+                                <a href="resources.html#journal" class="strategy-btn">Open Journal</a>
+                            </div>
+                            <div class="strategy-card">
+                                <i class="fas fa-brain"></i>
+                                <h4>Mindfulness</h4>
+                                <p>Practice grounding and breathing exercises</p>
+                                <a href="resources.html#meditation" class="strategy-btn">Start Meditation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-tab" data-tab-content="emergency">
+                        <h3>Crisis & Relapse Prevention Plan</h3>
+                        <div class="emergency-plan">
+                            <div class="plan-section">
+                                <h4>Warning Signs</h4>
+                                <ul>
+                                    <li>Increased stress or anxiety</li>
+                                    <li>Social isolation</li>
+                                    <li>Romanticizing past substance use</li>
+                                    <li>Neglecting self-care</li>
+                                    <li>Stopping recovery activities</li>
+                                </ul>
+                            </div>
+                            <div class="plan-section">
+                                <h4>Emergency Contacts</h4>
+                                <div class="emergency-contacts">
+                                    <div class="contact-item">
+                                        <strong>Campus Crisis Line</strong>
+                                        <a href="tel:555-123-4567">(555) 123-4567</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <strong>Addiction Helpline</strong>
+                                        <a href="tel:1-800-662-4357">1-800-662-HELP</a>
+                                    </div>
+                                    <div class="contact-item">
+                                        <strong>Crisis Text Line</strong>
+                                        <span>Text HOME to 741741</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="plan-section">
+                                <h4>Immediate Actions</h4>
+                                <ol>
+                                    <li>Remove yourself from triggering situations</li>
+                                    <li>Contact your support person immediately</li>
+                                    <li>Attend a support meeting (in-person or virtual)</li>
+                                    <li>Use healthy coping strategies from your toolkit</li>
+                                    <li>If in immediate danger, call emergency services</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="additional-resources">
+            <div class="container">
+                <h2>Additional Recovery Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h3>Recommended Reading</h3>
+                        <ul>
+                            <li><a href="#">Understanding Addiction: A Guide for Students</a></li>
+                            <li><a href="#">The Recovery Workbook: Practical Exercises</a></li>
+                            <li><a href="#">Navigating College in Recovery</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Online Support Communities</h3>
+                        <ul>
+                            <li><a href="#">Students in Recovery Forum</a></li>
+                            <li><a href="#">24/7 Online Meetings</a></li>
+                            <li><a href="#">Peer Support Chat</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3>Mobile Apps</h3>
+                        <ul>
+                            <li><a href="#">Sobriety Counter & Tracker</a></li>
+                            <li><a href="#">Meditation for Recovery</a></li>
+                            <li><a href="#">Virtual Support Group App</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resources-cta">
+                    <p>For more comprehensive resources, visit our <a href="resources.html">Resources Page</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Campus Wellness Hub</h3>
+                    <p>Providing comprehensive wellness support for university students.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: wellness@campus.edu</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Campus Wellness Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+ <script src="js/script.js"></script>
+    <script>
+        // Self-Assessment Functionality
+        document.getElementById('assessmentButton').addEventListener('click', function() {
+            calculateAddictionAssessment();
+        });
+
+        function calculateAddictionAssessment() {
+            // Get all selected values
+            const q1 = parseInt(document.querySelector('input[name="aq1"]:checked')?.value || 0);
+            const q2 = parseInt(document.querySelector('input[name="aq2"]:checked')?.value || 0);
+            const q3 = parseInt(document.querySelector('input[name="aq3"]:checked')?.value || 0);
+            const q4 = parseInt(document.querySelector('input[name="aq4"]:checked')?.value || 0);
+            
+            // Calculate total score
+            const totalScore = q1 + q2 + q3 + q4;
+            
+            // Determine risk level and recommendations
+            let resultText = '';
+            let recommendations = '';
+            
+            if (totalScore <= 2) {
+                resultText = 'Based on your responses, you appear to be at low risk for substance use issues.';
+                recommendations = `
+                    <p>Recommendations:</p>
+                    <ul>
+                        <li>Continue practicing healthy habits</li>
+                        <li>Educate yourself about substance use risks</li>
+                        <li>Attend wellness workshops for prevention</li>
+                        <li>Reach out if you have any concerns in the future</li>
+                    </ul>
+                `;
+            } else if (totalScore <= 6) {
+                resultText = 'Your responses suggest some patterns of concern regarding substance use.';
+                recommendations = `
+                    <p>Recommendations:</p>
+                    <ul>
+                        <li>Consider speaking with a counselor for a professional assessment</li>
+                        <li>Attend a support group to learn from others' experiences</li>
+                        <li>Explore our educational resources on substance use</li>
+                        <li>Practice harm reduction strategies if you choose to use substances</li>
+                    </ul>
+                `;
+            } else {
+                resultText = 'Your responses indicate a high likelihood of substance use issues that would benefit from professional support.';
+                recommendations = `
+                    <p>Recommendations:</p>
+                    <ul>
+                        <li>Schedule a confidential consultation with our addiction specialist</li>
+                        <li>Consider joining a support group immediately</li>
+                        <li>Explore treatment options including counseling</li>
+                        <li>Develop a safety plan with our support team</li>
+                    </ul>
+                    <p><strong>We strongly encourage you to reach out for support. You don't have to face this alone.</strong></p>
+                `;
+            }
+            
+            // Display results
+            document.getElementById('addictionResultText').textContent = resultText;
+            document.getElementById('addictionResultRecommendations').innerHTML = recommendations;
+            document.getElementById('addictionAssessmentResult').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('addictionAssessmentResult').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Tab functionality for recovery tools
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all tab content
+                document.querySelectorAll('.tool-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Show the selected tab content
+                const tabName = this.getAttribute('data-tab');
+                document.querySelector(`.tool-tab[data-tab-content="${tabName}"]`).classList.add('active');
+            });
+        });
+
+        // Sobriety counter functionality
+        document.getElementById('setSobrietyDate').addEventListener('click', function() {
+            const sobrietyDate = new Date(document.getElementById('sobrietyDate').value);
+            const today = new Date();
+            
+            if (isNaN(sobrietyDate.getTime())) {
+                alert('Please select a valid date');
+                return;
+            }
+            
+            // Calculate days sober
+            const timeDiff = today.getTime() - sobrietyDate.getTime();
+            const daysSober = Math.floor(timeDiff / (1000 * 3600 * 24));
+            
+            if (daysSober < 0) {
+                alert('Please select a date in the past');
+                return;
+            }
+            
+            // Update display
+            document.getElementById('daysSober').textContent = daysSober;
+            
+            // Calculate money saved (assuming $7.50 per day average)
+            const moneySaved = daysSober * 7.5;
+            document.getElementById('moneySaved').textContent = '$' + moneySaved.toFixed(0);
+            
+            // Calculate meetings attended (assuming 3 meetings per week)
+            const meetingsAttended = Math.floor(daysSober / 7 * 3);
+            document.getElementById('meetingsAttended').textContent = meetingsAttended;
+            
+            // Show progress bar and set progress
+            const progressBar = document.querySelector('.progress-bar');
+            const progressFill = document.querySelector('.progress-fill');
+            progressBar.style.display = 'block';
+            
+            // Calculate next milestone (30, 60, 90, 180, 365 days)
+            const milestones = [30, 60, 90, 180, 365];
+            let nextMilestone = milestones.find(m => m > daysSober) || 365;
+            
+            const progressPercent = (daysSober / nextMilestone) * 100;
+            progressFill.style.width = Math.min(progressPercent, 100) + '%';
+            
+            document.querySelector('.milestone-progress h4').textContent = `Next Milestone: ${nextMilestone} Days`;
+            document.querySelector('.milestone-progress span').textContent = `${nextMilestone - daysSober} days to go!`;
+        });
+
+        // Mobile menu toggle (if not already in the main stylesheet)
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Theme toggle functionality (if not already in the main stylesheet)
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+    </script>
+     <script>
+        // Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Check for saved theme preference or use system preference
+const currentTheme = localStorage.getItem('theme') || 
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+
+// Apply the current theme
+if (currentTheme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Show sun icon for dark mode
+} else {
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Show moon icon for light mode
+}
+
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    
+    if (currentTheme === 'dark') {
+        document.body.removeAttribute('data-theme');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Switch to moon icon
+        localStorage.setItem('theme', 'light');
+    } else {
+        document.body.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Switch to sun icon
+        localStorage.setItem('theme', 'dark');
+    }
+});
+    </script>
+    <script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
+        });
+        
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    // For dropdown parents, don't close the menu immediately
+                    if (!link.parentElement.classList.contains('dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && 
+                !hamburger.contains(e.target) && 
+                !navMenu.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+        
+        // Handle dropdowns on mobile
+        const dropdownToggles = document.querySelectorAll('.dropdown > .nav-link');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdownMenu = this.nextElementSibling;
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu !== dropdownMenu && menu.classList.contains('show')) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdownMenu.classList.toggle('show');
+                }
+            });
+        });
+    }
+});
+</script>
+</body>
+</html>
