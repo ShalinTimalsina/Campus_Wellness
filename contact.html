@@ -652,35 +652,17 @@
         <div class="modal-content appointment-modal">
             <span class="close" onclick="closeModal('appointmentModal')">&times;</span>
             <h2>Schedule an Appointment</h2>
-            <form id="appointmentForm">
-                <div class="form-group">
-                    <label for="appointmentType">Type of Appointment *</label>
-                    <select id="appointmentType" required>
-                        <option value="">Select appointment type</option>
-                        <option value="consultation">General Consultation</option>
-                        <option value="counseling">Mental Health Counseling</option>
-                        <option value="nutrition">Nutrition Counseling</option>
-                        <option value="fitness">Fitness Assessment</option>
-                        <option value="wellness">Wellness Coaching</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="appointmentDate">Preferred Date *</label>
-                    <input type="date" id="appointmentDate" required>
-                </div>
-                <div class="form-group">
-                    <label>Available Time Slots *</label>
-                    <div class="time-slots" id="timeSlots">
-                        <div class="time-slot" data-time="09:00">9:00 AM</div>
-                        <div class="time-slot" data-time="10:00">10:00 AM</div>
-                        <div class="time-slot" data-time="11:00">11:00 AM</div>
-                        <div class="time-slot" data-time="13:00">1:00 PM</div>
-                        <div class="time-slot" data-time="14:00">2:00 PM</div>
-                        <div class="time-slot" data-time="15:00">3:00 PM</div>
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">Confirm Appointment</button>
-            </form>
+            <form id="contactForm" novalidate autocomplete="off">
+  <label>First Name *</label>
+  <input type="text" id="firstName" name="firstName" required>
+  <span class="error" id="firstNameError"></span>
+  <br>
+  <label>Last Name *</label>
+  <input type="text" id="lastName" name="lastName" required>
+  <span class="error" id="lastNameError"></span>
+  <!-- Your other fields... -->
+  <button type="submit">Send Message</button>
+</form>
         </div>
     </div>
     <script src="scripts.js"></script>
@@ -690,7 +672,60 @@
         
 
     <script src="js/script.js"></script>
+
+<script>
+function onlyLetters(value) {
+    // Only letters, spaces, hyphens, apostrophes
+    return /^[A-Za-z\s'-]+$/.test(value);
+}
+
+document.getElementById('firstName').addEventListener('input', function () {
+    const errorSpan = document.getElementById('firstNameError');
+    if (this.value && !onlyLetters(this.value)) {
+        errorSpan.textContent = 'First name can only contain letters (A-Z), spaces, hyphens, or apostrophes.';
+        this.classList.add('invalid');
+    } else {
+        errorSpan.textContent = '';
+        this.classList.remove('invalid');
+    }
+});
+
+document.getElementById('lastName').addEventListener('input', function () {
+    const errorSpan = document.getElementById('lastNameError');
+    if (this.value && !onlyLetters(this.value)) {
+        errorSpan.textContent = 'Last name can only contain letters (A-Z), spaces, hyphens, or apostrophes.';
+        this.classList.add('invalid');
+    } else {
+        errorSpan.textContent = '';
+        this.classList.remove('invalid');
+    }
+});
+
+// Optional: Prevent form submission on invalid names
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    const first = document.getElementById('firstName').value;
+    const last = document.getElementById('lastName').value;
+    let valid = true;
+
+    if (!onlyLetters(first)) {
+        document.getElementById('firstNameError').textContent = 'First name can only contain letters (A-Z), spaces, hyphens, or apostrophes.';
+        valid = false;
+    }
+    if (!onlyLetters(last)) {
+        document.getElementById('lastNameError').textContent = 'Last name can only contain letters (A-Z), spaces, hyphens, or apostrophes.';
+        valid = false;
+    }
+
+    if (!valid) {
+        e.preventDefault();
+    }
+});
+</script>
+
+
+
     <script>
+        
         document.addEventListener('DOMContentLoaded', function() {
     // Get Directions button
     const directionsBtn = document.getElementById('directionsBtn');
