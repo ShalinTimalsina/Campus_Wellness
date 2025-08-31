@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Campus Wellness Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Add your custom page styles here */
+        body {
+            background: var(--background-color, #f8f9fa);
+        }
+        .appointment-container {
+            max-width: 520px;
+            margin: 60px auto;
+            background: var(--card-background, #fff);
+            padding: 2rem;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color, #ecf0f1);
+        }
+        .appointment-container h1 {
+            color: var(--primary-color, #3498db);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color, #2c3e50);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid var(--border-color, #ecf0f1);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--background-color, #fcfcfc);
+            color: var(--text-color, #2c3e50);
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color, #3498db);
+        }
+        .btn-primary {
+            background: var(--primary-color, #3498db);
+            color: white;
+            border: none;
+            padding: 1rem 0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .btn-primary:hover {
+            background: var(--secondary-color, #2c3e50);
+        }
+        .success, .error {
+            margin-top: 1rem;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+        }
+        .success {
+            background: #27ae60;
+            color: white;
+        }
+        .error {
+            background: #e74c3c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="appointment-container">
+        <h1><i class="fas fa-calendar-plus"></i> Book Appointment</h1>
+        <form id="appointmentForm" autocomplete="off">
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="date">Preferred Date *</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Preferred Time *</label>
+                <select id="time" name="time" required>
+                    <option value="">Select time</option>
+                    <option value="08:00 AM">08:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason for Appointment *</label>
+                <textarea id="reason" name="reason" required placeholder="How can we help you?"></textarea>
+            </div>
+            <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Submit Request</button>
+            <div class="success" id="successMsg">Thank you! Your appointment request has been submitted.</div>
+            <div class="error" id="errorMsg">Please fill all required fields correctly.</div>
+        </form>
+    </div>
+    <script>
+        // Simple form validation and feedback
+        document.getElementById('appointmentForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            let form = e.target;
+            let valid = form.fullName.value && form.email.value && form.date.value && form.time.value && form.reason.value;
+            document.getElementById('successMsg').style.display = valid ? 'block' : 'none';
+            document.getElementById('errorMsg').style.display = valid ? 'none' : 'block';
+            if(valid){
+                form.reset();
+                setTimeout(function(){
+                    document.getElementById('successMsg').style.display = 'none';
+                }, 3500);
+            }
+        });
+    </script>
+</body>
+</html>
